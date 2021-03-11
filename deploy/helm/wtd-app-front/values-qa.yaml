@@ -1,0 +1,12 @@
+bosun-simple-app:
+  bosun:
+    region: eu-west-1
+    vpc: qa
+
+  ingress:
+    enabled: true
+    class: private
+    tlsIssuer: letsencrypt-environment-subdomain
+    host: "wtd-app-front"
+    path: /
+    annotations: {}
