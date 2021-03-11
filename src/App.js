@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import axios from "axios";
+import "./App.css";
+import Selector from "./components/selector";
+import AnswerField from "./components/answerField";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Jumbotron from "react-bootstrap/Jumbotron";
+import Container from "react-bootstrap/Container";
 
 function App() {
+  const [answer, setAnswer] = useState();
+
+  function handleSelect(selected, category) {
+    axios("http://localhost:8000/api/answers/" + selected).then(function (
+      response
+    ) {
+      setAnswer(response.data);
+      // handle success
+    });
+  }
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Jumbotron fluid>
+          <Container>
+            <h1>WHAT :TODO</h1>
+            <p>, that is the question:</p>
+            <i className="float-right">(from Hamlet, spoken by Hamlet)</i>
+            <br />
+            <i className="float-right">Maybe</i>
+          </Container>
+        </Jumbotron>
       </header>
+      <div className="container">
+        <Selector onSelect={handleSelect} />
+        <AnswerField answer={answer} />
+      </div>
     </div>
   );
 }
