@@ -23,7 +23,6 @@ function App() {
       <header className="App-header">
         <Jumbotron fluid>
           <Container>
-            <h1>WHAT :TODO</h1>
             <p>, that is the question:</p>
             <i className="float-right">(from Hamlet, spoken by Hamlet)</i>
             <br />
