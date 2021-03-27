@@ -8,6 +8,7 @@
   border-radius: 10px;
   box-shadow: -1px 2px 5px gray;
   max-height: fit-content;
+  text-decoration: none;
 }
 .resultSnippet {
   padding: 0px 20px 5px 20px;
@@ -15,6 +16,9 @@
 }
 
 .q_text {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: pointer;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;

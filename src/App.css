@@ -80,6 +80,9 @@
 .form-control {
   font-size: 25px;
 }
+.font {
+  font-size: 25px;
+}
 .btn-white {
   background-color: #fff;
 }
@@ -87,4 +90,9 @@
   font-size: 25px;
   border-radius: 15px;
   background-color: #7b89f4;
+}
+.btn-bv {
+  background-color: #7b89f4;
+  color: white;
+  font-weight: 600;
 }

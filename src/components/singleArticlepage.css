@@ -1,0 +1,48 @@
+.resultHeaderArticle {
+  border: solid 1px #bbbcbd;
+  border-radius: 10px;
+  transform: translate(-2rem, -20%);
+  max-width: max-content;
+}
+.resultBoxArticle {
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px gray;
+  max-height: fit-content;
+  background-color: #f4f4f4;
+  padding-bottom: 15px;
+}
+.resultSnippetArticle {
+  padding: 0px 20px 5px 20px;
+  height: fit-content;
+}
+.answerTarget {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: -1px 2px 5px gray;
+  padding: 15px;
+  margin-left: 10px;
+}
+
+.knowMore {
+  background-color: red;
+  border-radius: 7px;
+  padding: 10px;
+}
+
+.knowMore .centerButtons {
+  text-align: center;
+}
+
+.langFlags span {
+  border-radius: 15px;
+  width: 25px;
+  height: 25px;
+  padding: 7px;
+  font-size: 17px;
+  margin-left: 5px;
+  color: black;
+}
+.langFlags span:hover {
+  color: #6ed8bf;
+  cursor: pointer;
+}
