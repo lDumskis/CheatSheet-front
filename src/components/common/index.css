@@ -16,11 +16,13 @@
 }
 
 .q_text {
+  min-height: 100px;
   text-decoration: inherit;
   color: inherit;
   cursor: pointer;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
+  color: black;
 }

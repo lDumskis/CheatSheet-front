@@ -46,3 +46,6 @@
   color: #6ed8bf;
   cursor: pointer;
 }
+.answerField {
+  white-space: pre-line;
+}

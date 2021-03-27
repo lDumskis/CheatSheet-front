@@ -3,10 +3,8 @@ import "./articleRequests.css";
 
 const ArticleRequest = () => {
   return (
-    <div className="ms-3 ps-5 pe-5">
-      <h2 className="card-title text-center display-5">
-        <strong>Request an Article</strong>
-      </h2>
+    <div className="col">
+      <h2 className="card-title text-center display-5">Request an Article</h2>
       <div className="row">
         <label
           for="RequestQuestion"
@@ -17,9 +15,9 @@ const ArticleRequest = () => {
         </label>
         <div className="col-9">
           <textarea
-            id="RequestQuestion"
+            id="requestQuestion"
             type="text"
-            className="form-control RequestQuestion"
+            className="form-control requestQuestion"
             placeholder="Add as many details as you can."
           />
         </div>
