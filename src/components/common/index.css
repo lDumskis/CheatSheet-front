@@ -1,0 +1,22 @@
+.resultHeader {
+  border: solid 1px #bbbcbd;
+  border-radius: 10px;
+  transform: translate(-1rem, -30%);
+  max-width: max-content;
+}
+.resultBox {
+  border-radius: 10px;
+  box-shadow: -1px 2px 5px gray;
+  max-height: fit-content;
+}
+.resultSnippet {
+  padding: 0px 20px 5px 20px;
+  margin-top: -10px;
+}
+
+.q_text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}

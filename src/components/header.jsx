@@ -5,21 +5,23 @@ import SearchTags from "./searchTags";
 
 const Header = () => {
   return (
-    <div className="container-fluid p-2">
+    <>
       <div className="row mt-4 mb-5">
-        <div className="col-3">
+        <div className="col-4 logo-header">
           <h1>CHEAT SHEET</h1>
         </div>
-        <div className="col-6"></div>
-        <div className="col-3">
-          <button className="btn btn-primary rounded-pill">
-            REQUEST AN ARTICLE
+        <div className="col-4"></div>
+        <div className="col-4">
+          <button className="btn btn-primary request-font">
+            <b>REQUEST AN ARTICLE</b>
           </button>
         </div>
       </div>
-      <SearchField />
-      <SearchTags />
-    </div>
+      <div className="justify-content-center">
+        <SearchField />
+        <SearchTags />
+      </div>
+    </>
   );
 };
 
