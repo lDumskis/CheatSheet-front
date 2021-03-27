@@ -25,7 +25,7 @@ function App() {
     <>
       <div className="container-fluid p-2">
         <div className="container">
-          <Header />
+         <Header />
         </div>
       </div>
       <div className="container">

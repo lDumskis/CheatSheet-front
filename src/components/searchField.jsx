@@ -7,10 +7,7 @@ const SearchField = () => {
     <div className="row">
       <div className="offset-1 col-8">
         <div
-          className="input-group mb-1
-          
-          "
-        >
+          className="input-group mb-1">
           <button
             className="btn btn-outline-secondary"
             type="button"
@@ -31,6 +28,9 @@ const SearchField = () => {
           />
         </div>
       </div>
+
+
+
       <div className="col-2">
         <div>
           <button className="btn btn-light rounded" id="btn-search">
