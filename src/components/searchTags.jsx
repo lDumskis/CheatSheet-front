@@ -19,7 +19,7 @@ export default function SearchTags() {
       .then((data) => setTags(data));
   }, []);
 
-  if (visible > 5) {
+  if (visible < 5) {
     return (
       <div className="row">
         <div className="offset-1 col10">
@@ -55,9 +55,9 @@ export default function SearchTags() {
           <label>POPULAR SEARCH TAGS</label>
           <div className="tag-container">
             {tags.slice(0, visible).map((item) => (
-              <div className="tag">{item.title}</div>
+              <div className="tag">{item.tag}</div>
             ))}
-            <button onClick={loadMoreTags} className="tag-load-more">
+            <button onClick={loadAllTags} className="tag-load-more">
               Load More &gt;
             </button>
           </div>
@@ -70,18 +70,8 @@ export default function SearchTags() {
         <label>POPULAR SEARCH TAGS</label>
         <div className="tag-container">
           {tags.slice(0, visible).map((item) => (
-            <div className="tag">{item.title}</div>
+            <div className="tag">{item.tag}</div>
           ))}
-          <button onClick={loadMoreTags} className="tag-load-more">
-            Load More &gt;
-          </button>
-          <button
-            onClick={loadAllTags}
-            className="tag-load-more"
-            id="loadAllTags"
-          >
-            Load All Tags &darr;
-          </button>
         </div>
       </div>
     );
