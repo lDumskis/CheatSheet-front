@@ -1,56 +1,86 @@
 import React from "react";
 import "../App.css";
-import { useState } from "react";
+import { useState, useEffect, Component } from "react";
+import btnVisiblityToggler from "./visibilityToggle";
 
 export default function SearchTags() {
-  const [tags] = useState([
-    "1 tag",
-    "2 tag",
-    "3 tag",
-    "4 tag",
-    "4 tag",
-    "4 tag",
-    "4 tag",
-    "4 tag",
-  ]);
-  const n = 6;
-  const maxArray = tags.slice(0, n);
-  console.log(maxArray);
+  const [tags, setTags] = useState([]);
+  const [visible, setVisible] = useState(6);
 
-  if (tags.length <= 6) {
+  const loadMoreTags = () => {
+    setVisible((prevValue) => prevValue + 24);
+  };
+  const loadAllTags = () => {
+    setVisible((prevValue) => prevValue + tags.length - prevValue);
+  };
+
+  useEffect(() => {
+    fetch("https://wtdback.qa.bazaarvoice.com/api/tags")
+      .then((res) => res.json())
+      .then((data) => setTags(data));
+  }, []);
+
+  if (visible > 5){
     return (
-      <div className="row">
-        <div className="offset-1 col-10">
+    <div className="row">
+        <div className="offset-1 col10">
           <label>POPULAR SEARCH TAGS</label>
           <div className="tag-container">
-            {tags.map((tag, index) => {
-              return (
-                <div key={index} className="tag">
-                  {tag}
-                </div>
-              );
-            })}
+            {tags.slice(0, visible).map((item) => (
+              <div className="tag">{item.tag}</div>
+            ))}
+          </div>
+        </div>
+      </div>
+    )
+  }
+  
+  else if (visible === 6) {
+    return (
+      <div className="row">
+        <div className="offset-1 col10">
+          <label>POPULAR SEARCH TAGS</label>
+          <div className="tag-container">
+            {tags.slice(0, visible).map((item) => (
+              <div className="tag">{item.tag}</div>
+            ))}
+            <button onClick={loadMoreTags} className="tag-load-more">
+              Load More &gt;
+            </button>
           </div>
         </div>
       </div>
     );
-  } else if (tags.length > 6) {
+  } else if (visible <= 30) {
     return (
       <div className="row">
-        <div className="offset-1 col-10">
-          <label> POPULAR SEARCH TAGS</label>
+        <div className="offset-1 col10">
+          <label>POPULAR SEARCH TAGS</label>
           <div className="tag-container">
-            {maxArray.map((maxArray, index) => {
-              return (
-                <>
-                  <div key={index} className="tag">
-                    {maxArray} else
-                  </div>
-                </>
-              );
-            })}{" "}
-            <div className="tag-load-more">Load More </div>
+            {tags.slice(0, visible).map((item) => (
+              <div className="tag">{item.title}</div>
+            ))}
+            <button onClick={loadMoreTags} className="tag-load-more">
+              Load More &gt;
+            </button>
           </div>
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div className="offset-1 col10">
+        <label>POPULAR SEARCH TAGS</label>
+        <div className="tag-container">
+          {tags.slice(0, visible).map((item) => (
+            <div className="tag">{item.title}</div>
+          ))}
+          <button onClick={loadMoreTags} className="tag-load-more">
+            Load More &gt;
+          </button>
+          <button onClick={loadAllTags} className="tag-load-more" id="loadAllTags">
+            Load All Tags &darr;
+          </button>
         </div>
       </div>
     );

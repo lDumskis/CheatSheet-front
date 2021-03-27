@@ -1,6 +1,6 @@
 .container-fluid {
   background-color: #002e6e;
-  height: 360px;
+  height: auto;
 }
 
 .logo-header h1 {
@@ -44,8 +44,8 @@
   min-height: 30px;
   display: flex;
   flex-wrap: wrap;
-  height: 40px;
   padding: 5px;
+  position: relative;
 }
 
 .tag {
@@ -76,6 +76,7 @@
   margin: 5px 5px 0px 0px;
   background-color: #7b89f4;
   cursor: pointer;
+  border-style: none;
 }
 .form-control {
   font-size: 25px;
