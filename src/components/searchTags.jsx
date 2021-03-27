@@ -1,17 +1,16 @@
 import React from "react";
 import "../App.css";
-import { useState, useEffect, Component } from "react";
-import btnVisiblityToggler from "./visibilityToggle";
+import { useState, useEffect } from "react";
 
 export default function SearchTags() {
   const [tags, setTags] = useState([]);
   const [visible, setVisible] = useState(6);
 
   const loadMoreTags = () => {
-    setVisible((prevValue) => prevValue + 24);
+    setVisible(visible + 24);
   };
   const loadAllTags = () => {
-    setVisible((prevValue) => prevValue + tags.length - prevValue);
+    setVisible(tags.length);
   };
 
   useEffect(() => {
@@ -20,9 +19,9 @@ export default function SearchTags() {
       .then((data) => setTags(data));
   }, []);
 
-  if (visible > 5){
+  if (visible > 5) {
     return (
-    <div className="row">
+      <div className="row">
         <div className="offset-1 col10">
           <label>POPULAR SEARCH TAGS</label>
           <div className="tag-container">
@@ -32,10 +31,8 @@ export default function SearchTags() {
           </div>
         </div>
       </div>
-    )
-  }
-  
-  else if (visible === 6) {
+    );
+  } else if (visible === 6) {
     return (
       <div className="row">
         <div className="offset-1 col10">
@@ -78,7 +75,11 @@ export default function SearchTags() {
           <button onClick={loadMoreTags} className="tag-load-more">
             Load More &gt;
           </button>
-          <button onClick={loadAllTags} className="tag-load-more" id="loadAllTags">
+          <button
+            onClick={loadAllTags}
+            className="tag-load-more"
+            id="loadAllTags"
+          >
             Load All Tags &darr;
           </button>
         </div>
