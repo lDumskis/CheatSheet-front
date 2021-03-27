@@ -1,0 +1,79 @@
+.container-fluid{
+    background-color: #002E6E;
+    height: 360px;
+}
+
+.col-3 h1{
+    color: white;
+    text-align: center;
+}
+
+.input-group button {
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+}
+
+.input-group input {
+    border-radius: 15px;
+}
+
+#btn-search {
+    border-radius: 15px !important;
+    padding: 10px 20px 10px 20px;
+}
+
+#btn-search:hover {
+    color: #54D1B4;
+}
+
+.row label {
+    color: white;
+    font-size: 24px;
+    padding-left: 20px;
+}
+
+.row span {
+    color: #C9F0E7;
+    padding-left: 20px;
+    background-color: white;
+}
+
+.tag-container {
+    min-width: 60%;
+    min-height: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    height: 40px;
+    padding: 5px;
+}
+
+.tag {
+    color: #6ED8BF;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid;
+    height: 30px;
+    border-radius: 20px;
+    margin: 5px 5px 0px 0px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.container label {
+    padding-top: 10px;
+    color: white;
+}
+
+.tag-load-more{
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    height: 30px;
+    border-radius: 20px;
+    margin: 5px 5px 0px 0px;
+    background-color: #7B89F4;
+    cursor: pointer;
+}
