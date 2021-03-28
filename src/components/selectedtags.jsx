@@ -1,15 +1,20 @@
-import { useState, useEffect } from "react";
-import SearchTags from "./searchTags";
+import React, { useContext } from "react";
+import SearchContext from "./../context/searchContext";
+import Tag from "./Tag";
 
 const Selectedtags = () => {
-
-    return (
-        <div className="row">
-          <div className="tag-container">
-              <div className="tag" >tag</div>
-          </div>
-        </div>
-    )
-}
+  const { sTags, setSTAgs } = useContext(SearchContext);
+  return (
+    <div className="row mb-4">
+      <div className="tag-container">
+        {sTags
+          .filter((item, index) => sTags.indexOf(item) === index)
+          .map((tag) => (
+            <Tag name={tag} tags={sTags} setTags={setSTAgs} remove="true" />
+          ))}
+      </div>
+    </div>
+  );
+};
 
 export default Selectedtags;

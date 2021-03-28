@@ -13,6 +13,8 @@ function App() {
   const baseURL = "https://wtdback.qa.bazaarvoice.com/api/";
   const [articles, setArticles] = useState([]);
   const [result, setResult] = useState([]);
+  const [search, setSearch] = useState();
+  const [sTags, setSTAgs] = useState([]);
 
   useEffect(() => {
     getAllArticles();
@@ -25,6 +27,21 @@ function App() {
     });
   };
 
+  useEffect(() => {
+    let newArticles = articles.filter((article) =>
+      article.title.toLowerCase().includes(search.toLowerCase())
+    );
+    setResult(newArticles);
+  }, [search]);
+
+  useEffect(() => {
+    let newArticles = articles.filter((article) =>
+      article.t.filter((tag) => sTags.includes(tag.tag))
+    );
+
+    setResult(newArticles);
+  }, [sTags]);
+
   return (
     <SearchContext.Provider
       value={{
@@ -32,6 +49,10 @@ function App() {
         setArticles: setArticles,
         result: result,
         setResult: setResult,
+        sTags: sTags,
+        setSTAgs: setSTAgs,
+        search: search,
+        setSearch: setSearch,
       }}
     >
       <div className="container-fluid p-2">
@@ -42,8 +63,7 @@ function App() {
       <div className="container">
         <div className="row mt-5">
           <div className="offset-1 col-10">
-            <Selectedtags />
-            <div className="row">
+            <div className="row mainPageBg">
               <Switch>
                 <Route path="/request">
                   <ArticleRequest />
@@ -52,6 +72,13 @@ function App() {
                   <SingleArticlePage />
                 </Route>
                 <Route exact path="/">
+                  <h1
+                    className="center-h1 bv-blue-text
+                  "
+                  >
+                    Popular topics
+                  </h1>
+                  <Selectedtags />
                   {result.map((article) => (
                     <TextFields info={article} />
                   ))}

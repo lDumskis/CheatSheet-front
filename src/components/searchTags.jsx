@@ -1,20 +1,18 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../App.css";
-import { useState, useEffect } from "react";
+import SearchContext from "./../context/searchContext";
+import Tag from "./Tag";
 
 export default function SearchTags() {
+  const { setSTAgs, sTags } = useContext(SearchContext);
   const [tags, setTags] = useState([]);
   const [visible, setVisible] = useState(6);
-  const [selectedTags, setSelected] = useState([]);
 
   const loadMoreTags = () => {
     setVisible(visible + 24);
   };
   const loadAllTags = () => {
     setVisible(tags.length);
-  };
-  const selectedItem = (data) => {
-    console.log(data);
   };
 
   useEffect(() => {
@@ -30,7 +28,7 @@ export default function SearchTags() {
           <label>POPULAR SEARCH TAGS</label>
           <div className="tag-container">
             {tags.slice(0, visible).map((item) => (
-              <div className="tag">{item.tag}</div>
+              <Tag name={item.tag} setTags={setSTAgs} tags={sTags} />
             ))}
           </div>
         </div>
@@ -43,9 +41,7 @@ export default function SearchTags() {
           <label>POPULAR SEARCH TAGS</label>
           <div className="tag-container">
             {tags.slice(0, visible).map((item) => (
-              <div onClick={selectedItem} className="tag">
-                {item.tag}
-              </div>
+              <Tag name={item.tag} setTags={setSTAgs} tags={sTags} />
             ))}
             <button onClick={loadMoreTags} className="tag-load-more">
               Load More &gt;
@@ -61,7 +57,7 @@ export default function SearchTags() {
           <label>POPULAR SEARCH TAGS</label>
           <div className="tag-container">
             {tags.slice(0, visible).map((item) => (
-              <div className="tag">{item.tag}</div>
+              <Tag name={item.tag} setTags={setSTAgs} tags={sTags} />
             ))}
             <button onClick={loadAllTags} className="tag-load-more">
               Load More &gt;
@@ -76,7 +72,7 @@ export default function SearchTags() {
         <label>POPULAR SEARCH TAGS</label>
         <div className="tag-container">
           {tags.slice(0, visible).map((item) => (
-            <div className="tag">{item.tag}</div>
+            <Tag name={item.tag} setTags={setSTAgs} tags={sTags} />
           ))}
         </div>
         <button onClick={() => setVisible(6)} className="tag-load-more">

@@ -8,6 +8,7 @@
 }
 .requestQuestion {
   height: 300px;
+  font-size: 15px;
 }
 .emailMeFooter {
   margin-bottom: 1rem;
@@ -17,4 +18,15 @@
 .attachButton {
   max-width: 30px;
   max-height: 30px;
+}
+.request-container {
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 15px;
+}
+#RequesterEmail {
+  font-size: 15px;
+}
+.reqLabelOverride {
+  color: black;
 }
