@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
 
@@ -6,6 +6,10 @@ export const Thankyoumodal = ({ showModal, setShowModal }) => {
   const onCloseModal = () => {
     setShowModal(false);
   };
+
+  function refreshPage() {
+    window.location.reload(false);
+  }
 
   return (
     <>
@@ -19,7 +23,7 @@ export const Thankyoumodal = ({ showModal, setShowModal }) => {
                 <button className="btn-module-home">HOME</button>
               </Link>
 
-              <button onClick={onCloseModal} className="btn-module-another">
+              <button onClick={refreshPage} className="btn-module-another">
                 GOT ANOTHER REQUEST?
               </button>
             </div>
