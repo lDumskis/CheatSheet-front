@@ -1,38 +1,34 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../App.css";
-import magnifying_icon from "../images/magnifying_glass.png";
+import SearchContext from "./../context/searchContext";
 
 const SearchField = () => {
+  const { articles, setArticles, setResult } = useContext(SearchContext);
+  const [search, setSearch] = useState();
+
+  useEffect(() => {
+    let newArticles = articles.filter((article) =>
+      article.title.toLowerCase().includes(search.toLowerCase())
+    );
+    setResult(newArticles);
+  }, [search]);
+
   return (
-    <div className="row">
-      <div className="offset-1 col-8">
-        <div className="input-group mb-1">
-          <button
-            className="btn btn-outline-secondary"
-            type="button"
-            id="button-addon1"
-          >
-            <img
-              className="magnifying_icon"
-              src={magnifying_icon}
-              alt="magnifying icon"
-            />
-          </button>
+    <div className="row height d-flex justify-content-center align-items-center">
+      <div className="offset-1 col-7">
+        <div className="search">
+          <i className="fa fa-search" />
           <input
+            value={search}
             type="text"
             className="form-control"
-            placeholder="e.g. syndication"
-            aria-label="Example text with button addon"
-            aria-describedby="button-addon1"
+            placeholder="Have a question? Ask Now"
+            onChange={(e) => setSearch(e.target.value)}
           />
         </div>
       </div>
       <div className="col-2">
-        <div>
-          <button className="btn btn-light rounded" id="btn-search">
-            search
-          </button>
-        </div>
+        <button className="btn btn-bv font">I am not used</button>
       </div>
     </div>
   );

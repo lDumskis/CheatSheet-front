@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import SearchContext from "./context/searchContext";
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import axios from "axios";
@@ -7,11 +7,12 @@ import Header from "./components/header";
 import TextFields from "./components/common/TextFields";
 import SingleArticlePage from "./components/SingleArticlePage";
 import ArticleRequest from "./components/ArticleRequest";
-import Selectedtags from "./components/selectedtags"
+import Selectedtags from "./components/selectedtags";
 
 function App() {
   const baseURL = "https://wtdback.qa.bazaarvoice.com/api/";
   const [articles, setArticles] = useState([]);
+  const [result, setResult] = useState([]);
 
   useEffect(() => {
     getAllArticles();
@@ -20,11 +21,19 @@ function App() {
   const getAllArticles = () => {
     axios.get(baseURL).then((response) => {
       setArticles(response.data);
+      setResult(response.data);
     });
   };
 
   return (
-    <>
+    <SearchContext.Provider
+      value={{
+        articles: articles,
+        setArticles: setArticles,
+        result: result,
+        setResult: setResult,
+      }}
+    >
       <div className="container-fluid p-2">
         <div className="container">
           <Header />
@@ -43,7 +52,7 @@ function App() {
                   <SingleArticlePage />
                 </Route>
                 <Route exact path="/">
-                  {articles.map((article) => (
+                  {result.map((article) => (
                     <TextFields info={article} />
                   ))}
                 </Route>
@@ -52,7 +61,7 @@ function App() {
           </div>
         </div>
       </div>
-    </>
+    </SearchContext.Provider>
   );
 }
 

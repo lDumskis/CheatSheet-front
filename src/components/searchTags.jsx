@@ -15,7 +15,7 @@ export default function SearchTags() {
   };
   const selectedItem = (data) => {
     console.log(data);
-  }
+  };
 
   useEffect(() => {
     fetch("https://wtdback.qa.bazaarvoice.com/api/tags")
@@ -30,7 +30,7 @@ export default function SearchTags() {
           <label>POPULAR SEARCH TAGS</label>
           <div className="tag-container">
             {tags.slice(0, visible).map((item) => (
-              <div className="tag" >{item.tag}</div>
+              <div className="tag">{item.tag}</div>
             ))}
           </div>
         </div>
@@ -43,7 +43,9 @@ export default function SearchTags() {
           <label>POPULAR SEARCH TAGS</label>
           <div className="tag-container">
             {tags.slice(0, visible).map((item) => (
-              <div onClick={selectedItem} className="tag">{item.tag}</div>
+              <div onClick={selectedItem} className="tag">
+                {item.tag}
+              </div>
             ))}
             <button onClick={loadMoreTags} className="tag-load-more">
               Load More &gt;
@@ -77,6 +79,9 @@ export default function SearchTags() {
             <div className="tag">{item.tag}</div>
           ))}
         </div>
+        <button onClick={() => setVisible(6)} className="tag-load-more">
+          Reduce &gt;
+        </button>
       </div>
     );
   }
