@@ -1,7 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import "./articleRequests.css";
+import Thankyoumodal from "./thankyoumodal";
+
 
 const ArticleRequest = () => {
+
+  const [showModal, setShowModal] = useState(false);
+  const openModal = () => {
+    setShowModal(prev => !prev);
+    console.log(Thankyoumodal);
+  };
+
   return (
     <div className="col request-container">
       <h2 className="card-title text-center display-5 bv-blue-text">
@@ -33,7 +42,8 @@ const ArticleRequest = () => {
       </div>
       <div className="row mt-4 ">
         <div className="offset-9 col-4">
-          <button className="btn btn-bv font request-font">REQUEST</button>
+          <button onClick={openModal} className="btn btn-bv font request-font">REQUEST</button>
+          <Thankyoumodal showModal={showModal} setShowModal={setShowModal} />
         </div>
       </div>
     </div>
