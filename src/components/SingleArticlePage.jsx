@@ -27,10 +27,10 @@ const SingleArticlePage = () => {
         <div className="resultBoxArticle">
           <h2 className="resultHeaderArticle bg-light p-2">{article.title}</h2>
           <div className="row">
-            <div className="offset-6 col-2 langFlags">
-              <span>en</span>
-              <span>fr</span>
-              <span>de</span>
+            <div className="offset-6 col-3 langFlags">
+              <p>en</p>
+              <p>fr</p>
+              <p>de</p>
             </div>
           </div>
           <div className="resultSnippetArticle row mt-3">
@@ -59,15 +59,15 @@ const SingleArticlePage = () => {
                   </a>
                   <br />
                   <a href="#" className="btn mt-3 btn-bv">
-                    Knowledge base
+                    Confluenza base
                   </a>
                   <br />
                   <a href="#" className="btn mt-3 btn-bv">
-                    Knowledge base
+                    TestPage
                   </a>
                   <br />
                   <a href="#" className="btn mt-3 btn-bv">
-                    Knowledge base
+                    MoreStuff base
                   </a>
                 </div>
               </div>

@@ -6,6 +6,7 @@ const SearchField = () => {
   const { articles, setArticles, setResult, search, setSearch } = useContext(
     SearchContext
   );
+  const [words, setWords] = useState("Motivated one");
 
   return (
     <div className="row height d-flex justify-content-center align-items-center">
@@ -22,7 +23,14 @@ const SearchField = () => {
         </div>
       </div>
       <div className="col-2">
-        <button className="btn btn-bv font">I am not used</button>
+        <button
+          className="btn btn-bv font"
+          onClick={() => {
+            alert("I will achieve great things one day! :D");
+          }}
+        >
+          {words}
+        </button>
       </div>
     </div>
   );

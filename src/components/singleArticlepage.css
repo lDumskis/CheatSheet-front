@@ -33,14 +33,16 @@
   text-align: center;
 }
 
-.langFlags span {
-  border-radius: 15px;
-  width: 25px;
-  height: 25px;
+.langFlags p {
+  display: inline;
+  background-color: white;
+  width: max-content;
+  height: max-content;
   padding: 7px;
-  font-size: 17px;
+  font-size: 20px;
   margin-left: 5px;
   color: black;
+  border-radius: 15px;
 }
 .langFlags span:hover {
   color: #6ed8bf;

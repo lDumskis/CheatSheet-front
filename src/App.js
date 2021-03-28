@@ -8,7 +8,7 @@ import TextFields from "./components/common/TextFields";
 import SingleArticlePage from "./components/SingleArticlePage";
 import ArticleRequest from "./components/ArticleRequest";
 import Selectedtags from "./components/selectedtags";
-import SubArticle from "./components/subArticle"
+import SubArticle from "./components/subArticle";
 
 function App() {
   const baseURL = "https://wtdback.qa.bazaarvoice.com/api/";
@@ -32,15 +32,21 @@ function App() {
     let newArticles = articles.filter((article) =>
       article.title.toLowerCase().includes(search.toLowerCase())
     );
+
     setResult(newArticles);
   }, [search]);
 
   useEffect(() => {
-    let newArticles = articles.filter((article) =>
-      article.t.filter((tag) => sTags.includes(tag.tag))
-    );
-
-    setResult(newArticles);
+    let newArray = [];
+    articles.forEach((element) => {
+      element.t.forEach((tags) => {
+        if (sTags.includes(tags.tag)) {
+          newArray.push(element);
+        }
+      });
+    });
+    console.log(sTags);
+    sTags.length < 1 ? setResult(articles) : setResult(newArray);
   }, [sTags]);
 
   return (
