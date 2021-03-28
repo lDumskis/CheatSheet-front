@@ -54,19 +54,19 @@ const SingleArticlePage = () => {
                 <div class="centerButtons">
                   <h3>Supporting Material</h3>
 
-                  <a href="#" className="btn mt-2 btn-bv">
+                  <a href="#" className="btn mt-3 btn-bv">
                     Knowledge base
                   </a>
                   <br />
-                  <a href="#" className="btn mt-2 btn-bv">
+                  <a href="#" className="btn mt-3 btn-bv">
                     Knowledge base
                   </a>
                   <br />
-                  <a href="#" className="btn mt-2 btn-bv">
+                  <a href="#" className="btn mt-3 btn-bv">
                     Knowledge base
                   </a>
                   <br />
-                  <a href="#" className="btn mt-2 btn-bv">
+                  <a href="#" className="btn mt-3 btn-bv">
                     Knowledge base
                   </a>
                 </div>

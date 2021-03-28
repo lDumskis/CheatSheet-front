@@ -3,16 +3,11 @@ import "./articleRequests.css";
 
 const ArticleRequest = () => {
   return (
-    <div className="col">
-      <h2 className="card-title text-center display-5">Request an Article</h2>
-      <div className="row">
-        <label
-          for="RequestQuestion"
-          className="form-label"
-          id="reqLabelOverride"
-        >
-          What is your question?
-        </label>
+    <div className="col request-container">
+      <h2 className="card-title text-center display-5 bv-blue-text">
+        Request an Article
+      </h2>
+      <div className="row mt-4">
         <div className="col-9">
           <textarea
             id="requestQuestion"
@@ -23,24 +18,23 @@ const ArticleRequest = () => {
         </div>
         <div className="col-3 d-flex flex-column justify-content-between">
           <button className="rounded-circle attachButton">
-            <img
-              src="https://www.orbitaldebris.jsc.nasa.gov/images/beehives/geo256_p.jpg"
-              className="rounded-circle attachIcon"
-            />
+            <i className="fas fa-paperclip" />
           </button>
           <input id="RequesterEmail" placeholder="Your email *"></input>
         </div>
       </div>
-      <div className="row justify-content-end mt-1">
-        <p className="emailMeFooter col-4">
-          notify me when a response is posted
-        </p>
-        <input
-          className="form-check-input"
-          type="checkbox"
-          value=""
-          id="EmailPlz"
-        />
+      <div className="row mt-1">
+        <div className="offset-9 col-4">
+          <span className="emailMeFooter ">
+            notify me when a response is posted
+          </span>{" "}
+          <input className="form-check-input" type="checkbox" value="" />
+        </div>
+      </div>
+      <div className="row mt-4 ">
+        <div className="offset-9 col-4">
+          <button className="btn btn-bv font request-font">REQUEST</button>
+        </div>
       </div>
     </div>
   );

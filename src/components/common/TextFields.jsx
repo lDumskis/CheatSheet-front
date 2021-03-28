@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import SearchContext from "./../../context/searchContext";
 import "./index.css";
+import Tag from "../Tag";
 
 const TextFields = ({ info }) => {
+  const { setSTAgs, sTags } = useContext(SearchContext);
   return (
     <div className="col-6 mt-4">
       <div className="resultBox">
@@ -14,6 +17,15 @@ const TextFields = ({ info }) => {
           >
             <p className="q_text">{info && info.a}</p>
           </Link>
+          <div className="row">
+            <div classNAme="col">
+              <div className="tag-container">
+                {info.t.map((item) => (
+                  <Tag name={item.tag} setTags={setSTAgs} tags={sTags} />
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

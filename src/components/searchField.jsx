@@ -3,15 +3,9 @@ import "../App.css";
 import SearchContext from "./../context/searchContext";
 
 const SearchField = () => {
-  const { articles, setArticles, setResult } = useContext(SearchContext);
-  const [search, setSearch] = useState();
-
-  useEffect(() => {
-    let newArticles = articles.filter((article) =>
-      article.title.toLowerCase().includes(search.toLowerCase())
-    );
-    setResult(newArticles);
-  }, [search]);
+  const { articles, setArticles, setResult, search, setSearch } = useContext(
+    SearchContext
+  );
 
   return (
     <div className="row height d-flex justify-content-center align-items-center">

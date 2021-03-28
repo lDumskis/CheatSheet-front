@@ -24,9 +24,9 @@
 }
 
 .knowMore {
-  background-color: red;
-  border-radius: 7px;
-  padding: 10px;
+  background-image: url("../images/buttons_background.svg");
+  padding: 20px;
+  background-size: cover;
 }
 
 .knowMore .centerButtons {
@@ -48,4 +48,12 @@
 }
 .answerField {
   white-space: pre-line;
+}
+
+.centerButtons h3 {
+  color: white;
+}
+.centerButtons a {
+  padding: 5px;
+  font-size: 20px;
 }
