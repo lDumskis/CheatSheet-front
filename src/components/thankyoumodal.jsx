@@ -1,28 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import "../App.css";
+import { Link } from "react-router-dom";
 
-const MODAL_STYLES = {
-    position: 'fixed',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    backgroundColor: '#002E6E',
-    padding: '50px',
-    color: '#FFF'
-    
-}
+export const Thankyoumodal = ({ showModal, setShowModal }) => {
+  const onCloseModal = () => {
+    setShowModal(false);
+  };
 
-export const Thankyoumodal = ({showModal, setShowModal}) => {
-  return <>{showModal ? 
+  return (
+    <>
+      {showModal ? (
+        <div onClick={onCloseModal} className="modal-background-style">
+          <div className="modal-styles">
+            <span class="material-icons">done</span>
+            <div>
+              <h4 id="modal-pupup-text">Thank you! We got your request.</h4>
+              <Link style={{ textDecoration: "none" }} to="/">
+                <button className="btn-module-home">HOME</button>
+              </Link>
 
-  <div style= {MODAL_STYLES}>
-      <span class="material-icons">done</span><br></br>
-      Thank you! We got your request.
-      <div className="row-2">
-          <button className="btn-module">HOME</button>
-          <button className="btn-module">HOT ANOTHER REQUEST?</button>     </div>
-    </div> 
-: null}</>;
+              <button onClick={onCloseModal} className="btn-module-another">
+                GOT ANOTHER REQUEST?
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
+    </>
+  );
 };
 
 export default Thankyoumodal;

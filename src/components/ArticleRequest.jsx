@@ -8,7 +8,6 @@ const ArticleRequest = () => {
   const [showModal, setShowModal] = useState(false);
   const openModal = () => {
     setShowModal(prev => !prev);
-    console.log(Thankyoumodal);
   };
 
   return (
