@@ -8,6 +8,7 @@ import TextFields from "./components/common/TextFields";
 import SingleArticlePage from "./components/SingleArticlePage";
 import ArticleRequest from "./components/ArticleRequest";
 import Selectedtags from "./components/selectedtags";
+import SubArticle from "./components/subArticle"
 
 function App() {
   const baseURL = "https://wtdback.qa.bazaarvoice.com/api/";
@@ -50,6 +51,9 @@ function App() {
                 </Route>
                 <Route path="/article/:id">
                   <SingleArticlePage />
+                </Route>
+                <Route path="/subArticle">
+                  <SubArticle />
                 </Route>
                 <Route exact path="/">
                   {result.map((article) => (
