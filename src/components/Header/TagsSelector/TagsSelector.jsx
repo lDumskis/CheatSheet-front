@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
-import "../App.css";
-import SearchContext from "./../context/searchContext";
-import Tag from "./Tag";
+import "../../../App.css";
+import SearchContext from "../../../context/searchContext";
+import Tag from "../../common/Tag";
 
-export default function SearchTags() {
+export default function TagsSelector() {
   const { setSTAgs, sTags } = useContext(SearchContext);
   const [tags, setTags] = useState([]);
   const [visible, setVisible] = useState(6);

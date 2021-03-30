@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
-import "../App.css";
-import SearchContext from "./../context/searchContext";
+import React, { useState, useContext } from "react";
+import "../../../App.css";
+import SearchContext from "./../../../context/searchContext";
 
 const SearchField = () => {
-  const { articles, setArticles, setResult, search, setSearch } = useContext(
-    SearchContext
-  );
-  const [words, setWords] = useState("Motivated one");
+  const { search, setSearch } = useContext(SearchContext);
+  const [words] = useState("Motivated one");
 
   return (
     <div className="row height d-flex justify-content-center align-items-center">

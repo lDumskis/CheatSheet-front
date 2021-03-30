@@ -1,14 +1,12 @@
-import React, {useState} from "react";
-import "./articleRequests.css";
-import Thankyoumodal from "./thankyoumodal";
-
+import React, { useState } from "react";
+import "./index.css";
+import Modal from "../common/Modal";
 
 const ArticleRequest = () => {
-
   const [showModal, setShowModal] = useState(false);
   const openModal = () => {
-    setShowModal(prev => !prev);
-    console.log(Thankyoumodal);
+    setShowModal((prev) => !prev);
+    console.log(Modal);
   };
 
   return (
@@ -29,7 +27,7 @@ const ArticleRequest = () => {
           <button className="rounded-circle attachButton">
             <i className="fas fa-paperclip" />
           </button>
-          <input id="RequesterEmail" placeholder="Your email *"></input>
+          <input id="requesterEmail" placeholder="Your email *"></input>
         </div>
       </div>
       <div className="row mt-1">
@@ -42,8 +40,10 @@ const ArticleRequest = () => {
       </div>
       <div className="row mt-4 ">
         <div className="offset-9 col-4">
-          <button onClick={openModal} className="btn btn-bv font request-font">REQUEST</button>
-          <Thankyoumodal showModal={showModal} setShowModal={setShowModal} />
+          <button onClick={openModal} className="btn btn-bv font request-font">
+            REQUEST
+          </button>
+          <Modal showModal={showModal} setShowModal={setShowModal} />
         </div>
       </div>
     </div>

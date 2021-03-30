@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "./singleArticlepage.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import "./index.css";
 
 const SingleArticlePage = () => {
   const { id } = useParams();
@@ -54,7 +54,7 @@ const SingleArticlePage = () => {
                 <div class="centerButtons">
                   <h3>Supporting Material</h3>
 
-                  <a href="#" className="btn mt-3 btn-bv">
+                  {/* <a href="#" className="btn mt-3 btn-bv">
                     Knowledge base
                   </a>
                   <br />
@@ -68,7 +68,7 @@ const SingleArticlePage = () => {
                   <br />
                   <a href="#" className="btn mt-3 btn-bv">
                     MoreStuff base
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>

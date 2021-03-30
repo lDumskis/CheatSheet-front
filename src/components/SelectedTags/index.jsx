@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import SearchContext from "./../context/searchContext";
-import Tag from "./Tag";
+import SearchContext from "../../context/searchContext";
+import Tag from "../common/Tag";
 
-const Selectedtags = () => {
+const SelectedTags = () => {
   const { sTags, setSTAgs } = useContext(SearchContext);
   return (
     <div className="row mb-4">
@@ -17,4 +17,4 @@ const Selectedtags = () => {
   );
 };
 
-export default Selectedtags;
+export default SelectedTags;

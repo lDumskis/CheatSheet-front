@@ -3,12 +3,12 @@ import SearchContext from "./context/searchContext";
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import axios from "axios";
-import Header from "./components/header";
+import Header from "./components/Header";
 import TextFields from "./components/common/TextFields";
 import SingleArticlePage from "./components/SingleArticlePage";
 import ArticleRequest from "./components/ArticleRequest";
-import Selectedtags from "./components/selectedtags";
-import SubArticle from "./components/subArticle";
+import SelectedTags from "./components/SelectedTags";
+import SubmitArticle from "./components/SubmitArticle";
 
 function App() {
   const baseURL = "https://wtdback.qa.bazaarvoice.com/api/";
@@ -78,8 +78,8 @@ function App() {
                 <Route path="/article/:id">
                   <SingleArticlePage />
                 </Route>
-                <Route path="/subArticle">
-                  <SubArticle />
+                <Route path="/submit">
+                  <SubmitArticle />
                 </Route>
                 <Route exact path="/">
                   <h1
@@ -88,7 +88,7 @@ function App() {
                   >
                     Popular topics
                   </h1>
-                  <Selectedtags />
+                  <SelectedTags />
                   {result.map((article) => (
                     <TextFields info={article} />
                   ))}

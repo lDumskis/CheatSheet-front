@@ -1,8 +1,8 @@
 import React from "react";
-import "../App.css";
+import "../../App.css";
 import { Link } from "react-router-dom";
-import SearchField from "./searchField";
-import SearchTags from "./searchTags";
+import SearchField from "./SearchField";
+import TagsSelector from "./TagsSelector/TagsSelector";
 
 const Header = () => {
   return (
@@ -24,7 +24,7 @@ const Header = () => {
       </div>
       <div className="justify-content-center">
         <SearchField />
-        <SearchTags />
+        <TagsSelector />
       </div>
     </>
   );
