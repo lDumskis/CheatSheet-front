@@ -5,8 +5,12 @@ import Modal from "../common/Modal";
 const ArticleRequest = () => {
   const [showModal, setShowModal] = useState(false);
   const openModal = () => {
+<<<<<<< HEAD:src/components/ArticleRequest/index.jsx
     setShowModal((prev) => !prev);
     console.log(Modal);
+=======
+    setShowModal(prev => !prev);
+>>>>>>> 58512a92e07e1a4e13ce1721b6bb36e2da9da0a4:src/components/ArticleRequest.jsx
   };
 
   return (
