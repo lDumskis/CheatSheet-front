@@ -13,6 +13,7 @@ import SubmitArticle from "./components/SubmitArticle";
 function App() {
   const baseURL = "https://wtdback.qa.bazaarvoice.com/api/";
   const [articles, setArticles] = useState([]);
+  const [filtered, setFiltered] = useState([]);
   const [result, setResult] = useState([]);
   const [search, setSearch] = useState();
   const [sTags, setSTAgs] = useState([]);
@@ -29,14 +30,6 @@ function App() {
   };
 
   useEffect(() => {
-    let newArticles = articles.filter((article) =>
-      article.title.toLowerCase().includes(search.toLowerCase())
-    );
-
-    setResult(newArticles);
-  }, [search]);
-
-  useEffect(() => {
     let newArray = [];
     articles.forEach((element) => {
       element.t.forEach((tags) => {
@@ -45,9 +38,19 @@ function App() {
         }
       });
     });
-    console.log(sTags);
-    sTags.length < 1 ? setResult(articles) : setResult(newArray);
+    sTags.length < 1 ? setFiltered(articles) : setFiltered(newArray);
   }, [sTags]);
+  //Search Field
+  useEffect(() => {
+    let newArticles = filtered.filter(
+      (article) =>
+        article.title.toLowerCase().includes(search.toLowerCase()) ||
+        article.q.toLowerCase().includes(search.toLowerCase())
+    );
+
+    setResult(newArticles);
+  }, [search, filtered]);
+  //Tags field
 
   return (
     <SearchContext.Provider

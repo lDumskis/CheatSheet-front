@@ -15,7 +15,7 @@ const TextFields = ({ info }) => {
             style={{ textDecoration: "none", color: "black" }}
             to={"/article/" + info.id}
           >
-            <p className="q_text">{info && info.a}</p>
+            <p className="q_text">{info && info.q}</p>
           </Link>
           <div className="row">
             <div classNAme="col">
