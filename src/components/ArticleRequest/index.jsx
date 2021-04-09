@@ -5,26 +5,21 @@ import Modal from "../common/Modal";
 
 const ArticleRequest = () => {
   const [showModal, setShowModal] = useState(false);
+  const [email, setEmail] = useState("");
+  const [request, setRequest] = useState("");
 
   const openModal = () => {
-    axios
-      .post("https://wtdback.qa.bazaarvoice.com/api/", {
-        title: "TestPost",
-        q: "Posted request from Axios",
-        a: " ",
-        n: 0,
-        isPublished: false,
-        email: "test@n.com",
-        nickname: "Default",
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
-    //setShowModal(true);
+    axios.post("https://wtdback.qa.bazaarvoice.com/api/", {
+      title: "Requested Post",
+      q: request,
+      a: " ",
+      n: 0,
+      isPublished: false,
+      email: email,
+      nickname: "Default",
+      t: [],
+    });
+    setShowModal(true);
   };
 
   return (
@@ -39,13 +34,20 @@ const ArticleRequest = () => {
             type="text"
             className="form-control requestQuestion"
             placeholder="Add as many details as you can."
+            value={request}
+            onChange={(e) => setRequest(e.target.value)}
           />
         </div>
         <div className="col-3 d-flex flex-column justify-content-between">
           <button className="rounded-circle attachButton">
             <i className="fas fa-paperclip" />
           </button>
-          <input id="requesterEmail" placeholder="Your email *"></input>
+          <input
+            id="requesterEmail"
+            placeholder="Your email *"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
       </div>
       <div className="row mt-1">
