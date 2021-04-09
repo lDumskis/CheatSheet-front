@@ -1,12 +1,30 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./index.css";
 import Modal from "../common/Modal";
 
 const ArticleRequest = () => {
   const [showModal, setShowModal] = useState(false);
+
   const openModal = () => {
-    setShowModal((prev) => !prev);
-    console.log(Modal);
+    axios
+      .post("https://wtdback.qa.bazaarvoice.com/api/", {
+        title: "TestPost",
+        q: "Posted request from Axios",
+        a: " ",
+        n: 0,
+        isPublished: false,
+        email: "test@n.com",
+        nickname: "Default",
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    //setShowModal(true);
   };
 
   return (
