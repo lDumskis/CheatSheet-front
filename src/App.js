@@ -4,18 +4,18 @@ import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import axios from "axios";
 import Header from "./components/Header";
-import TextFields from "./components/common/TextFields";
 import SingleArticlePage from "./components/SingleArticlePage";
 import ArticleRequest from "./components/ArticleRequest";
-import SelectedTags from "./components/SelectedTags";
 import SubmitArticle from "./components/SubmitArticle";
+import Home from "./components/Home";
+import AllView from "./components/AllView";
 
 function App() {
   const baseURL = "https://wtdback.qa.bazaarvoice.com/api/";
   const [articles, setArticles] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [result, setResult] = useState([]);
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState("");
   const [sTags, setSTAgs] = useState([]);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ function App() {
       setResult(response.data);
     });
   };
-
+  //Tags field
   useEffect(() => {
     let newArray = [];
     articles.forEach((element) => {
@@ -44,13 +44,13 @@ function App() {
   useEffect(() => {
     let newArticles = filtered.filter(
       (article) =>
-        article.title.toLowerCase().includes(search.toLowerCase()) ||
-        article.q.toLowerCase().includes(search.toLowerCase())
+        (article.title &&
+          article.title.toLowerCase().includes(search.toLowerCase())) ||
+        (article.q && article.q.toLowerCase().includes(search.toLowerCase()))
     );
 
     setResult(newArticles);
   }, [search, filtered]);
-  //Tags field
 
   return (
     <SearchContext.Provider
@@ -78,6 +78,9 @@ function App() {
                 <Route path="/request">
                   <ArticleRequest />
                 </Route>
+                <Route path="/all">
+                  <AllView result={result} />
+                </Route>
                 <Route path="/article/:id">
                   <SingleArticlePage />
                 </Route>
@@ -85,16 +88,7 @@ function App() {
                   <SubmitArticle />
                 </Route>
                 <Route exact path="/">
-                  <h1
-                    className="center-h1 bv-blue-text
-                  "
-                  >
-                    Popular topics
-                  </h1>
-                  <SelectedTags />
-                  {result.map((article) => (
-                    <TextFields info={article} />
-                  ))}
+                  <Home result={result} />
                 </Route>
               </Switch>
             </div>

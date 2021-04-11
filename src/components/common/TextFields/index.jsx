@@ -4,8 +4,11 @@ import SearchContext from "../../../context/searchContext";
 import "./index.css";
 import Tag from "../Tag";
 
-const TextFields = ({ info }) => {
+const TextFields = ({ info, access }) => {
   const { setSTAgs, sTags } = useContext(SearchContext);
+  let theID = "";
+
+  access === "admin" ? (theID = info.id + "+") : (theID = info.id);
   return (
     <div className="col-6 mt-4">
       <div className="resultBox">
@@ -13,7 +16,7 @@ const TextFields = ({ info }) => {
         <div className="resultSnippet">
           <Link
             style={{ textDecoration: "none", color: "black" }}
-            to={"/article/" + info.id}
+            to={"/article/" + theID}
           >
             <p className="q_text">{info && info.q}</p>
           </Link>
