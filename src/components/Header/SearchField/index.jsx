@@ -8,21 +8,21 @@ const SearchField = () => {
 
   return (
     <div className="row height d-flex justify-content-center align-items-center">
-      <div className="offset-1 col-7">
+      <div className="offset-1 col-8">
         <div className="search">
           <i className="fa fa-search" />
           <input
             value={search}
             type="text"
             className="form-control"
-            placeholder="Have a question? Ask Now"
+            placeholder="e.g. syndication"
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
       </div>
-      <div className="col-2">
+     <div className="col-2">
         <button
-          className="btn btn-bv font"
+          className="btn btn-bv font btn-amazing"
           onClick={() => {
             alert("I will achieve great things one day! :D");
           }}

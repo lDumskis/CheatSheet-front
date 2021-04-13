@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Overpass");
+#root {
+
+}
 
 .container-fluid {
   background-color: #002e6e;
@@ -7,7 +10,10 @@
 
 .logo-header h1 {
   color: white;
-  text-align: center;
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: oblique;
+  font-weight: bold;
 }
 
 .input-group button {
@@ -69,6 +75,10 @@
   color: white;
 }
 
+.container {
+
+}
+
 .tag-load-more {
   color: white;
   display: flex;
@@ -81,8 +91,15 @@
   cursor: pointer;
   border-style: none;
 }
+.btn-amazing {
+  display: none;
+}
 .form-control {
-  font-size: 25px;
+  font-size: 22px;
+  border-radius: 18px;
+  font-style: italic;
+  padding: 10px 10px 10px 25px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .font {
   font-size: 25px;
@@ -91,9 +108,12 @@
   background-color: #fff;
 }
 .request-font {
-  font-size: 25px;
+  font-size: 22px;
   border-radius: 15px;
   background-color: #7b89f4;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 10px 20px 10px 20px;
+  margin-left: 129px;
 }
 .btn-bv {
   background-color: #7b89f4;
@@ -103,6 +123,8 @@
 
 .search {
   position: relative;
+  margin-right: 100px;
+  margin-left: -45px;
 }
 
 .search input {
@@ -129,8 +151,6 @@
   background-color: #f4f4f4;
   padding: 20px;
   border-radius: 15px;
-}
-.center-h1 {
 }
 
 .material-icons{

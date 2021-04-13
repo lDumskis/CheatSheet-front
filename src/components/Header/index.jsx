@@ -7,7 +7,7 @@ import TagsSelector from "./TagsSelector/TagsSelector";
 const Header = () => {
   return (
     <>
-      <div className="row mt-4 mb-5">
+      <div className="row mt-4 mb-4">
         <div className="col-4 logo-header">
           <Link style={{ textDecoration: "none" }} to="/">
             <h1>CHEAT SHEET</h1>
@@ -29,5 +29,6 @@ const Header = () => {
     </>
   );
 };
+
 
 export default Header;
