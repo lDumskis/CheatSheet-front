@@ -20,7 +20,7 @@
 
 .knowMore {
   background-image: url("../../images/buttons_background.svg");
-  padding: 20px;
+  padding: 30px 30px 40px 30px;
   background-size: cover;
 }
 
@@ -38,6 +38,7 @@
   margin-left: 5px;
   color: black;
   border-radius: 15px;
+  cursor: pointer;
 }
 .langFlags span:hover {
   color: #6ed8bf;
