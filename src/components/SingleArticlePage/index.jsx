@@ -50,9 +50,21 @@ const SingleArticlePage = () => {
             </h2>
             <div className="row">
               <div className="offset-6 col-3 langFlags">
-                <p>en</p>
-                <p>fr</p>
-                <p>de</p>
+                <p>
+                  <span role="img" aria-label="french-flag">
+                    🇺🇸
+                  </span>
+                </p>
+                <p>
+                  <span role="img" aria-label="french-flag">
+                    🇫🇷
+                  </span>
+                </p>
+                <p>
+                  <span role="img" aria-label="germany-flag">
+                    🇩🇪
+                  </span>
+                </p>
               </div>
             </div>
             <div className="resultSnippetArticle row mt-3">
@@ -67,7 +79,7 @@ const SingleArticlePage = () => {
                   <div className="row">
                     <div className="col-4">
                       <p className="authorDisclaimer">
-                        <em>{article.nickname}</em>
+                        <em>Written by {article.nickname}</em>
                       </p>
                     </div>
                     <div className="offset-6 col-1"></div>
@@ -111,9 +123,21 @@ const SingleArticlePage = () => {
             </h2>
             <div className="row">
               <div className="offset-6 col-3 langFlags">
-                <p>en</p>
-                <p>fr</p>
-                <p>de</p>
+                <p>
+                  <span role="img" aria-label="french-flag">
+                    🇺🇸
+                  </span>
+                </p>
+                <p>
+                  <span role="img" aria-label="french-flag">
+                    🇫🇷
+                  </span>
+                </p>
+                <p>
+                  <span role="img" aria-label="germany-flag">
+                    🇩🇪
+                  </span>
+                </p>
               </div>
             </div>
             <div className="resultSnippetArticle row mt-3">
@@ -123,7 +147,7 @@ const SingleArticlePage = () => {
                   <div className="row">
                     <div className="col-4">
                       <p className="authorDisclaimer">
-                        <em>Written by Someone</em>
+                        <em>Written by {article.nickname}</em>
                       </p>
                     </div>
                     <div className="offset-5 col-3">

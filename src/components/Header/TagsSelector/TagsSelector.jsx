@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import "../../../App.css";
 import SearchContext from "../../../context/SearchContext";
 import Tag from "../../common/Tag";
 
 export default function TagsSelector() {
-  const { setSTAgs, sTags } = useContext(SearchContext);
-  const [tags, setTags] = useState([]);
+  const { setSTAgs, sTags, tags } = useContext(SearchContext);
   const [visible, setVisible] = useState(6);
 
   const loadMoreTags = () => {
@@ -14,12 +13,6 @@ export default function TagsSelector() {
   const loadAllTags = () => {
     setVisible(tags.length);
   };
-
-  useEffect(() => {
-    fetch("https://wtdback.qa.bazaarvoice.com/api/tags")
-      .then((res) => res.json())
-      .then((data) => setTags(data));
-  }, []);
 
   if (visible < 5) {
     return (

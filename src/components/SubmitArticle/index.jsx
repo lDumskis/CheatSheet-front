@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./index.css";
 import LinkInput from "../common/LinkInput";
+import SearchContext from "../../context/SearchContext";
+import Select from "react-dropdown-select";
 
 const SubmitArticle = () => {
   const [links, setLinks] = useState(["link1"]);
+  const [newTags, setNewTags] = useState();
+
+  const { tags } = useContext(SearchContext);
+
+  useEffect(() => {}, [newTags]);
+
   return (
     <div className="ms-3 ps-5 pe-5" id="submissionForm">
       <h2 className="card-title text-center display-5 pageTitle helvetica-medium">
@@ -25,17 +33,20 @@ const SubmitArticle = () => {
           />
         </div>
         <div className="col-3 d-flex flex-column justify-content-between">
-          <div>
-            <div className="input-group mb-1">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="e.g. syndication"
-                aria-label="Example text with button addon"
-                aria-describedby="button-addon1"
-              />
-            </div>
+          <div className="input-group mb-1">
+            <Select
+              multi={true}
+              options={tags}
+              searchBy={tags.tag}
+              labelField="tag"
+              valueField="tag"
+              keepSelectedInList={true}
+              searchable={true}
+              create={true}
+              onChange={(values) => setNewTags(values)}
+            />
           </div>
+
           <div className="mt-auto">
             <input
               id="RequesterEmail"

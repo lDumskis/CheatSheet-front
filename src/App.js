@@ -19,6 +19,7 @@ function App() {
   const [search, setSearch] = useState("");
   const [sTags, setSTAgs] = useState([]);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [tags, setTags] = useState([]);
 
   useEffect(() => {
     getAllArticles();
@@ -31,6 +32,11 @@ function App() {
       setFiltered(response.data);
     });
   };
+  useEffect(() => {
+    fetch("https://wtdback.qa.bazaarvoice.com/api/tags")
+      .then((res) => res.json())
+      .then((data) => setTags(data));
+  }, []);
   //Tags field
   useEffect(() => {
     let newArray = [];
@@ -69,6 +75,8 @@ function App() {
         isAdmin: isAdmin,
         setIsAdmin: setIsAdmin,
         ADMIN_PW: ADMIN_PW,
+        tags: tags,
+        setTags: setTags,
       }}
     >
       <div className="container-fluid p-2">
