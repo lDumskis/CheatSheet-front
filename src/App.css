@@ -461,3 +461,8 @@
   color: #6ed8bf;
   cursor: pointer;
 }
+
+.background {
+  background-image: url("./images/circles.png");
+  background-size: contain;
+}

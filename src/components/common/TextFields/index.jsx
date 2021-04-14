@@ -12,7 +12,7 @@ const TextFields = ({ info, access }) => {
   return (
     <div className="col-6 mt-4">
       <div className="resultBox">
-        <h5 className="resultHeader bg-light p-2 helvetica-medium">
+        <h5 className="resultHeader bg-white p-2 helvetica-medium">
           {info && info.title}
         </h5>
         <div className="resultSnippet">

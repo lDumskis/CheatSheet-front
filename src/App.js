@@ -79,14 +79,15 @@ function App() {
         setTags: setTags,
       }}
     >
-      <div className="container-fluid p-2">
+      <div className="container-fluid p-2 ">
         <div className="container">
           <Header />
         </div>
       </div>
+      <div className="background">
       <div className="container">
-        <div className="row mt-5">
-          <div className="offset-1 col-10">
+        <div className="row mt-5 ">
+          <div className="offset-1 col-10 ">
             <div className="row resultBoxArticle">
               <Switch>
                 <Route path="/request">
@@ -108,6 +109,7 @@ function App() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </SearchContext.Provider>
   );
