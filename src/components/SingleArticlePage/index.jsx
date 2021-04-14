@@ -67,7 +67,7 @@ const SingleArticlePage = () => {
                   <div className="row">
                     <div className="col-4">
                       <p className="authorDisclaimer">
-                        <em>Written by Someone</em>
+                        <em>{article.nickname}</em>
                       </p>
                     </div>
                     <div className="offset-6 col-1"></div>
@@ -78,19 +78,19 @@ const SingleArticlePage = () => {
                 <div className="knowMore alight-baseline">
                   <div class="centerButtons">
                     <h3>Supporting Material</h3>
-                    <a href="#" className="btn mt-3 btn-bv">
+                    <a href="#" className="btn mt-3 px-3 btn-bv btn-support">
                       Knowledge base
                     </a>
                     <br />
-                    <a href="#" className="btn mt-3 btn-bv">
+                    <a href="#" className="btn mt-3 px-3 btn-bv btn-support">
                       Confluenza base
                     </a>
                     <br />
-                    <a href="#" className="btn mt-3 btn-bv">
+                    <a href="#" className="btn mt-3 px-5 btn-bv btn-support">
                       TestPage
                     </a>
                     <br />
-                    <a href="#" className="btn mt-3 btn-bv">
+                    <a href="#" className="btn mt-3 px-3 btn-bv btn-support">
                       MoreStuff base
                     </a>
                   </div>
@@ -141,19 +141,19 @@ const SingleArticlePage = () => {
                 <div className="knowMore alight-baseline">
                   <div class="centerButtons">
                     <h3>Supporting Material</h3>
-                    <a href="#" className="btn mt-3 btn-bv">
+                    <a href="#" className="btn mt-3 px-3 btn-bv btn-support">
                       Knowledge base
                     </a>
                     <br />
-                    <a href="#" className="btn mt-3 btn-bv">
+                    <a href="#" className="btn mt-3 px-3 btn-bv btn-support">
                       Confluenza base
                     </a>
                     <br />
-                    <a href="#" className="btn mt-3 btn-bv">
+                    <a href="#" className="btn mt-3 px-5 btn-bv btn-support">
                       TestPage
                     </a>
                     <br />
-                    <a href="#" className="btn mt-3 btn-bv">
+                    <a href="#" className="btn mt-3 px-3 btn-bv btn-support">
                       MoreStuff base
                     </a>
                   </div>

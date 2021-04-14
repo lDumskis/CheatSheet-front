@@ -29,3 +29,8 @@
   -webkit-box-orient: vertical;
   color: black;
 }
+.copy-in-text-field {
+  text-align: end;
+  margin-top: -30px;
+  margin-left: 13px;
+}
