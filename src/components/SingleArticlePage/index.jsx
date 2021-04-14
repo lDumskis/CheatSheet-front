@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import "./index.css";
+import SearchContext from "../../context/SearchContext";
 
 const SingleArticlePage = () => {
+  const { isAdmin, setIsAdmin, ADMIN_PW } = useContext(SearchContext);
+
   let { id } = useParams();
   let admin;
   id.endsWith("+") ? (admin = true) : (admin = false);
@@ -17,6 +20,19 @@ const SingleArticlePage = () => {
     getAllArticles();
   }, []);
 
+  useEffect(() => {
+    if (admin) {
+      if (isAdmin) {
+        console.log("LoggedIn");
+      } else {
+        let password = prompt("Enter the password: ");
+        if (password === ADMIN_PW) {
+          setIsAdmin(true);
+        } else password = prompt("Enter the password: ");
+      }
+    }
+  }, [admin]);
+
   const getAllArticles = () => {
     axios.get(baseURLId).then((response) => {
       console.log(baseURLId);
@@ -24,7 +40,7 @@ const SingleArticlePage = () => {
     });
   };
 
-  if (admin) {
+  if (admin && isAdmin) {
     return (
       <div className="row">
         <div className="col">

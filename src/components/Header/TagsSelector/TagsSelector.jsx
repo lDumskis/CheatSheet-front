@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import "../../../App.css";
-import SearchContext from "../../../context/searchContext";
+import SearchContext from "../../../context/SearchContext";
 import Tag from "../../common/Tag";
 
 export default function TagsSelector() {

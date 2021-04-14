@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import SearchContext from "./context/searchContext";
+import SearchContext from "./context/SearchContext";
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import axios from "axios";
@@ -11,12 +11,14 @@ import Home from "./components/Home";
 import AllView from "./components/AllView";
 
 function App() {
+  const ADMIN_PW = "kugelis";
   const baseURL = "https://wtdback.qa.bazaarvoice.com/api/";
   const [articles, setArticles] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [result, setResult] = useState([]);
   const [search, setSearch] = useState("");
   const [sTags, setSTAgs] = useState([]);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     getAllArticles();
@@ -64,6 +66,9 @@ function App() {
         setSTAgs: setSTAgs,
         search: search,
         setSearch: setSearch,
+        isAdmin: isAdmin,
+        setIsAdmin: setIsAdmin,
+        ADMIN_PW: ADMIN_PW,
       }}
     >
       <div className="container-fluid p-2">
