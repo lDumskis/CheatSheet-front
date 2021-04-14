@@ -30,7 +30,7 @@ const TextFields = ({ info, access }) => {
                 ))}
               </div>
             </div>
-            <div className="col-1">
+            <div className="copy-in-text-field">
               <button
                 onClick={() => navigator.clipboard.writeText(info.a)}
                 className="btn btn-bv copy-icon"

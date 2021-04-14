@@ -67,7 +67,7 @@ const SingleArticlePage = () => {
                   <div className="row">
                     <div className="col-4">
                       <p className="authorDisclaimer">
-                        <em>Written by Someone</em>
+                        <em>{article.nickname}</em>
                       </p>
                     </div>
                     <div className="offset-6 col-1"></div>
