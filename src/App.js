@@ -26,6 +26,7 @@ function App() {
     axios.get(baseURL).then((response) => {
       setArticles(response.data);
       setResult(response.data);
+      setFiltered(response.data);
     });
   };
   //Tags field
