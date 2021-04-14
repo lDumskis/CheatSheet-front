@@ -20,12 +20,7 @@ const AllView = ({ result }) => {
   return (
     <>
       <SelectedTags />
-      <h2
-        className="center-h1 bv-blue-text
-      "
-      >
-        Requested
-      </h2>
+      <h2 className="center-h1 bv-blue-text">Requested</h2>
       {result.map(
         (article) =>
           !article.isPublished &&

@@ -450,3 +450,10 @@
 .text-align {
   text-align: center;
 }
+.copy-icon {
+  font-size: 20px;
+}
+.copy-icon:hover {
+  color: #6ed8bf;
+  cursor: pointer;
+}

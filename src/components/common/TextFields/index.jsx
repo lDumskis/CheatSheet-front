@@ -23,12 +23,20 @@ const TextFields = ({ info, access }) => {
             <p className="q_text helvetica">{info && info.q}</p>
           </Link>
           <div className="row">
-            <div classNAme="col">
+            <div className="col-10">
               <div className="tag-container">
                 {info.t.map((item) => (
                   <Tag name={item.tag} setTags={setSTAgs} tags={sTags} />
                 ))}
               </div>
+            </div>
+            <div className="col-1">
+              <button
+                onClick={() => navigator.clipboard.writeText(info.a)}
+                className="btn btn-bv copy-icon"
+              >
+                <i className="far fa-clone"></i>
+              </button>
             </div>
           </div>
         </div>

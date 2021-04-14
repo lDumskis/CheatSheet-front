@@ -70,9 +70,7 @@ const SingleArticlePage = () => {
                         <em>Written by Someone</em>
                       </p>
                     </div>
-                    <div className="offset-6 col-1">
-                      <i class="far fa-clone font"></i>
-                    </div>
+                    <div className="offset-6 col-1"></div>
                   </div>
                 </div>
               </div>
@@ -128,8 +126,13 @@ const SingleArticlePage = () => {
                         <em>Written by Someone</em>
                       </p>
                     </div>
-                    <div className="offset-6 col-1">
-                      <i class="far fa-clone font"></i>
+                    <div className="offset-5 col-3">
+                      <button
+                        onClick={() => navigator.clipboard.writeText(article.a)}
+                        className="btn btn-bv copy-icon"
+                      >
+                        Copy <i className="far fa-clone"></i>
+                      </button>
                     </div>
                   </div>
                 </div>
