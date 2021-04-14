@@ -13,7 +13,7 @@ const SearchField = () => {
           <input
             value={search}
             type="text"
-            className="form-control"
+            className="form-control helvetica-italic"
             placeholder="e.g. syndication"
             onChange={(e) => setSearch(e.target.value)}
           />

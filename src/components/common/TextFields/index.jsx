@@ -12,13 +12,15 @@ const TextFields = ({ info, access }) => {
   return (
     <div className="col-6 mt-4">
       <div className="resultBox">
-        <h5 className="resultHeader bg-light p-2">{info && info.title}</h5>
+        <h5 className="resultHeader bg-light p-2 helvetica-medium">
+          {info && info.title}
+        </h5>
         <div className="resultSnippet">
           <Link
             style={{ textDecoration: "none", color: "black" }}
             to={"/article/" + theID}
           >
-            <p className="q_text">{info && info.q}</p>
+            <p className="q_text helvetica">{info && info.q}</p>
           </Link>
           <div className="row">
             <div classNAme="col">

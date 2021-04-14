@@ -74,7 +74,7 @@ function App() {
       <div className="container">
         <div className="row mt-5">
           <div className="offset-1 col-10">
-            <div className="row mainPageBg">
+            <div className="row resultBoxArticle">
               <Switch>
                 <Route path="/request">
                   <ArticleRequest />

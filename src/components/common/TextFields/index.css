@@ -3,6 +3,8 @@
   border-radius: 10px;
   transform: translate(-1rem, -30%);
   max-width: max-content;
+  letter-spacing: 0.12px;
+  color: #7c8af5;
 }
 .resultBox {
   border-radius: 10px;

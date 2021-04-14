@@ -28,8 +28,8 @@ const SingleArticlePage = () => {
     return (
       <div className="row">
         <div className="col">
-          <div className="resultBoxArticle">
-            <h2 className="resultHeaderArticle bg-light p-2">
+          <div>
+            <h2 className="resultHeaderArticle bg-light p-2 helvetica-medium bv-blue-text">
               {article.title}
             </h2>
             <div className="row">
@@ -45,7 +45,7 @@ const SingleArticlePage = () => {
                   <textarea
                     rows="20"
                     cols="60"
-                    className="answerField"
+                    className="answerField helvetica"
                     value={article.a}
                   />
                   <div className="row">
@@ -91,8 +91,8 @@ const SingleArticlePage = () => {
     return (
       <div className="row">
         <div className="col">
-          <div className="resultBoxArticle">
-            <h2 className="resultHeaderArticle bg-light p-2">
+          <div>
+            <h2 className="resultHeaderArticle bg-light p-2 helvetica-medium bv-blue-text">
               {article.title}
             </h2>
             <div className="row">
@@ -105,7 +105,7 @@ const SingleArticlePage = () => {
             <div className="resultSnippetArticle row mt-3">
               <div className="col-8">
                 <div className="answerTarget">
-                  <p className="answerField">{article.a}</p>
+                  <p className="answerField helvetica">{article.a}</p>
                   <div className="row">
                     <div className="col-4">
                       <p className="authorDisclaimer">

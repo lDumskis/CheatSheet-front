@@ -10,14 +10,14 @@ const Header = () => {
       <div className="row mt-4 mb-4">
         <div className="col-4 logo-header">
           <Link style={{ textDecoration: "none" }} to="/">
-            <h1>CHEAT SHEET</h1>
+            <span className="helvetica-bold logo">CHEAT SHEET</span>
           </Link>
         </div>
-        <div className="col-4"></div>
-        <div className="col-4">
+        <div className="col-5"></div>
+        <div className="col-3">
           <Link style={{ textDecoration: "none" }} to="/request">
-            <button className="btn btn-primary request-font">
-              <b>REQUEST AN ARTICLE</b>
+            <button className="btn btn-primary request-font helvetica-bold">
+              REQUEST AN ARTICLE
             </button>
           </Link>
         </div>
@@ -29,6 +29,5 @@ const Header = () => {
     </>
   );
 };
-
 
 export default Header;

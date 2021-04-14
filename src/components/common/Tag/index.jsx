@@ -4,7 +4,7 @@ const Tag = ({ name, setTags, tags, remove }) => {
   if (remove) {
     return (
       <div
-        className="tag"
+        className="tag helvetica"
         onClick={() => setTags(tags.filter((tag) => tag !== name))}
       >
         {name}
@@ -12,7 +12,7 @@ const Tag = ({ name, setTags, tags, remove }) => {
     );
   } else {
     return (
-      <div className="tag" onClick={() => setTags([...tags, name])}>
+      <div className="tag helvetica" onClick={() => setTags([...tags, name])}>
         {name}
       </div>
     );

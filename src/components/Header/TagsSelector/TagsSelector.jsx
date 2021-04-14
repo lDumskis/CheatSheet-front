@@ -25,7 +25,9 @@ export default function TagsSelector() {
     return (
       <div className="row">
         <div className="offset-1 col10">
-          <label>POPULAR SEARCH TAGS</label>
+          <label className="helvetica-bold popular-label">
+            POPULAR SEARCH TAGS
+          </label>
           <div className="tag-container">
             {tags.slice(0, visible).map((item) => (
               <Tag name={item.tag} setTags={setSTAgs} tags={sTags} />
@@ -38,7 +40,9 @@ export default function TagsSelector() {
     return (
       <div className="row">
         <div className="offset-1 col10">
-          <label>POPULAR SEARCH TAGS</label>
+          <label className="helvetica-bold popular-label">
+            POPULAR SEARCH TAGS
+          </label>
           <div className="tag-container">
             {tags.slice(0, visible).map((item) => (
               <Tag name={item.tag} setTags={setSTAgs} tags={sTags} />
@@ -54,7 +58,9 @@ export default function TagsSelector() {
     return (
       <div className="row">
         <div className="offset-1 col10">
-          <label>POPULAR SEARCH TAGS</label>
+          <label className="helvetica-bold popular-label">
+            POPULAR SEARCH TAGS
+          </label>
           <div className="tag-container">
             {tags.slice(0, visible).map((item) => (
               <Tag name={item.tag} setTags={setSTAgs} tags={sTags} />
@@ -69,7 +75,9 @@ export default function TagsSelector() {
   } else {
     return (
       <div className="offset-1 col10">
-        <label>POPULAR SEARCH TAGS</label>
+        <label className="helvetica-bold popular-label">
+          POPULAR SEARCH TAGS
+        </label>
         <div className="tag-container">
           {tags.slice(0, visible).map((item) => (
             <Tag name={item.tag} setTags={setSTAgs} tags={sTags} />
