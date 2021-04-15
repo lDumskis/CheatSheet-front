@@ -5,7 +5,7 @@ import SearchContext from "../../context/SearchContext";
 import Select from "react-dropdown-select";
 
 const SubmitArticle = () => {
-  const [links, setLinks] = useState(["link1"]);
+  const [links, setLinks] = useState([""]);
   const [newTags, setNewTags] = useState();
 
   const { tags } = useContext(SearchContext);
