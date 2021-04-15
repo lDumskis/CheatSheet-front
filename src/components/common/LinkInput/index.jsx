@@ -6,7 +6,6 @@ const LinkInput = ({ links, setLinks }) => {
     const { value } = e.target;
     newLinks[i] = value;
     setLinks(newLinks);
-    console.log(links);
   }
 
   function handleNewField() {

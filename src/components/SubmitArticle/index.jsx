@@ -16,17 +16,19 @@ const SubmitArticle = () => {
   const { tags } = useContext(SearchContext);
 
   function SubmitNewArticle() {
-    console.log(newTags);
-    axios.post("https://wtdback.qa.bazaarvoice.com/api/", {
-      title: "Requested Post",
-      q: question,
-      a: answer,
-      n: 0,
-      isPublished: true,
-      email: email,
-      nickname: "Default",
-      t: newTags,
-    });
+    try {
+      axios.post("https://wtdback.qa.bazaarvoice.com/api/", {
+        title: "Requested Post",
+        q: question,
+        a: answer,
+        n: 0,
+        isPublished: true,
+        email: email,
+        nickname: "Default",
+        t: newTags,
+        l: links,
+      });
+    } catch (error) {}
   }
 
   return (
