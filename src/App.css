@@ -465,4 +465,9 @@
 .background {
   background-image: url("./images/circles.png");
   background-size: contain;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.container {
+  padding-top: 1px;
 }

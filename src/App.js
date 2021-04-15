@@ -79,7 +79,7 @@ function App() {
         setTags: setTags,
       }}
     >
-      <div className="container-fluid p-2 ">
+      <div className="container-fluid p-2">
         <div className="container">
           <Header />
         </div>
