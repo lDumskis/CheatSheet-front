@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useRef } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import "./index.css";
@@ -15,6 +15,9 @@ const SingleArticlePage = () => {
 
   const baseURLId = "https://wtdback.qa.bazaarvoice.com/api/" + id;
   const [article, setArticle] = useState([]);
+  const [suggestion, setSuggestion] = useState("");
+  const [classes, setClasses] = useState("row mt-4 d-none");
+  const myRef = useRef(null);
 
   useEffect(() => {
     getAllArticles();
@@ -44,6 +47,20 @@ const SingleArticlePage = () => {
     axios.delete("https://wtdback.qa.bazaarvoice.com/api/" + id);
     //to add History back automation
   }
+
+  function handleEditButton() {
+    setClasses("row mt-4");
+  }
+
+  function handleSubmitChangeRequest() {
+    const current = article.a;
+    const newOne = suggestion;
+  }
+
+  useEffect(() => {
+    myRef.current.scrollIntoView();
+    setSuggestion(article.a);
+  }, [classes]);
 
   if (admin && isAdmin) {
     return (
@@ -125,78 +142,116 @@ const SingleArticlePage = () => {
     );
   } else {
     return (
-      <div className="row">
-        <div className="col">
-          <div>
-            <h2 className="resultHeaderArticle bg-light p-2 helvetica-medium bv-blue-text">
-              {article.title}
-            </h2>
-            <div className="row">
-              <div className="offset-6 col-3 langFlags">
-                <p>
-                  <span role="img" aria-label="french-flag">
-                    🇺🇸
-                  </span>
-                </p>
-                <p>
-                  <span role="img" aria-label="french-flag">
-                    🇫🇷
-                  </span>
-                </p>
-                <p>
-                  <span role="img" aria-label="germany-flag">
-                    🇩🇪
-                  </span>
-                </p>
+      <>
+        <div className="row">
+          <div className="col">
+            <div>
+              <h2 className="resultHeaderArticle bg-light p-2 helvetica-medium bv-blue-text">
+                {article.title}
+              </h2>
+              <div className="row">
+                <div className="offset-6 col-3 langFlags">
+                  <p>
+                    <span role="img" aria-label="french-flag">
+                      🇺🇸
+                    </span>
+                  </p>
+                  <p>
+                    <span role="img" aria-label="french-flag">
+                      🇫🇷
+                    </span>
+                  </p>
+                  <p>
+                    <span role="img" aria-label="germany-flag">
+                      🇩🇪
+                    </span>
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="resultSnippetArticle row mt-3">
-              <div className="col-8">
-                <div className="answerTarget">
-                  <p className="answerField helvetica">{article.a}</p>
-                  <div className="row">
-                    <div className="col-4">
-                      <p className="authorDisclaimer">
-                        <em>Written by {article.nickname}</em>
-                      </p>
-                    </div>
-                    <div className="offset-5 col-3">
-                      <button
-                        onClick={() => navigator.clipboard.writeText(article.a)}
-                        className="btn btn-bv copy-icon"
-                      >
-                        Copy <i className="far fa-clone"></i>
-                      </button>
+              <div className="resultSnippetArticle row mt-3">
+                <div className="col-8">
+                  <div className="answerTarget">
+                    <p className="answerField helvetica">{article.a}</p>
+                    <div className="row">
+                      <div className="col-4">
+                        <p className="authorDisclaimer">
+                          <em>Written by {article.nickname}</em>
+                        </p>
+                      </div>
+                      <div className="offset-1 col-3">
+                        <button
+                          onClick={() => handleEditButton()}
+                          className="btn btn-bv edit-icon"
+                        >
+                          <i className="far fa-edit"></i>
+                        </button>
+                      </div>
+                      <div className="offset-1 col-3">
+                        <button
+                          onClick={() =>
+                            navigator.clipboard.writeText(article.a)
+                          }
+                          className="btn btn-bv copy-icon"
+                        >
+                          Copy <i className="far fa-clone"></i>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className=" col-4">
-                <div className="knowMore alight-baseline">
-                  <div class="centerButtons">
-                    <h3>Supporting Material</h3>
-                    <a href="#" className="btn mt-3 px-3 btn-bv btn-support">
-                      Knowledge base
-                    </a>
-                    <br />
-                    <a href="#" className="btn mt-3 px-3 btn-bv btn-support">
-                      Confluenza base
-                    </a>
-                    <br />
-                    <a href="#" className="btn mt-3 px-5 btn-bv btn-support">
-                      TestPage
-                    </a>
-                    <br />
-                    <a href="#" className="btn mt-3 px-3 btn-bv btn-support">
-                      MoreStuff base
-                    </a>
+                <div className=" col-4">
+                  <div className="knowMore alight-baseline">
+                    <div class="centerButtons">
+                      <h3>Supporting Material</h3>
+                      <a href="#" className="btn mt-3 px-3 btn-bv btn-support">
+                        Knowledge base
+                      </a>
+                      <br />
+                      <a href="#" className="btn mt-3 px-3 btn-bv btn-support">
+                        Confluenza base
+                      </a>
+                      <br />
+                      <a href="#" className="btn mt-3 px-5 btn-bv btn-support">
+                        TestPage
+                      </a>
+                      <br />
+                      <a href="#" className="btn mt-3 px-3 btn-bv btn-support">
+                        MoreStuff base
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+
+        <div className={classes} ref={myRef}>
+          <h3>Request a change</h3>
+          <p>
+            Adjust the text to the way you think it should look like and add any
+            URLs Search tags as a free text under the actual text you are
+            modifying
+          </p>
+          <div className="col-10">
+            <textarea
+              rows="20"
+              style={{ width: "100%", resize: "none" }}
+              className="answerField helvetica"
+              value={suggestion}
+              onChange={(e) => setSuggestion(e.target.value)}
+            />
+          </div>
+          <div>
+            <button
+              onClick={() => handleSubmitChangeRequest()}
+              className="btn btn-bv"
+            >
+              Submit a Request
+            </button>
+          </div>
+        </div>
+      </>
     );
   }
 };
