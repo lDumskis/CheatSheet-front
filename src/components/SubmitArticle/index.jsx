@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
+import axios from "axios";
 import "./index.css";
 import LinkInput from "../common/LinkInput";
 import SearchContext from "../../context/SearchContext";
@@ -7,10 +8,26 @@ import Select from "react-dropdown-select";
 const SubmitArticle = () => {
   const [links, setLinks] = useState([""]);
   const [newTags, setNewTags] = useState();
+  const [title, setTitle] = useState();
+  const [answer, setAnswer] = useState();
+  const [question, setQuestion] = useState();
+  const [email, setEmail] = useState();
 
   const { tags } = useContext(SearchContext);
 
-  useEffect(() => {}, [newTags]);
+  function SubmitNewArticle() {
+    console.log(newTags);
+    axios.post("https://wtdback.qa.bazaarvoice.com/api/", {
+      title: "Requested Post",
+      q: question,
+      a: answer,
+      n: 0,
+      isPublished: true,
+      email: email,
+      nickname: "Default",
+      t: newTags,
+    });
+  }
 
   return (
     <div className="ms-3 ps-5 pe-5" id="submissionForm">
@@ -20,9 +37,18 @@ const SubmitArticle = () => {
       <div className="row">
         <div className="col-9">
           <input
-            placeholder="Title"
+            placeholder="Question Title"
             id="articleTitle"
             className="form-control titleField"
+            value={question}
+            onChange={(e) => setQuestion(e.target.value)}
+          />
+          <input
+            placeholder="Detailed question"
+            id="Question details"
+            className="form-control titleField"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
           <textarea
             id="subArticle"
@@ -30,6 +56,8 @@ const SubmitArticle = () => {
             className="form-control articleBody mt-2"
             placeholder="Add as many details as you can."
             style={{ resize: "none" }}
+            value={answer}
+            onChange={(e) => setAnswer(e.target.value)}
           />
         </div>
         <div className="col-3 d-flex flex-column justify-content-between">
@@ -52,6 +80,8 @@ const SubmitArticle = () => {
               id="RequesterEmail"
               className="userEmail"
               placeholder=" Your email *"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             ></input>
           </div>
         </div>
@@ -63,7 +93,11 @@ const SubmitArticle = () => {
       </div>
       <div className="row justify-content-end">
         <div className="mt-2 offset-10 col-2">
-          <button id="submit" className="btn btn-success">
+          <button
+            onClick={() => SubmitNewArticle()}
+            id="submit"
+            className="btn btn-success"
+          >
             Submit
           </button>
         </div>
