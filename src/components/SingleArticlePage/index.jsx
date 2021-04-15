@@ -40,6 +40,11 @@ const SingleArticlePage = () => {
     });
   };
 
+  function handleDelete() {
+    axios.delete("https://wtdback.qa.bazaarvoice.com/api/" + id);
+    //to add History back automation
+  }
+
   if (admin && isAdmin) {
     return (
       <div className="row">
@@ -82,7 +87,12 @@ const SingleArticlePage = () => {
                         <em>Written by {article.nickname}</em>
                       </p>
                     </div>
-                    <div className="offset-6 col-1"></div>
+                    <div
+                      onClick={() => handleDelete()}
+                      className="offset-6 col-1"
+                    >
+                      X
+                    </div>
                   </div>
                 </div>
               </div>
