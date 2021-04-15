@@ -19,7 +19,7 @@ const ArticleRequest = () => {
       nickname: "Default",
       t: [],
     });
-    setShowModal(true);
+    setShowModal((prev) => !prev);
   };
 
   return (
@@ -63,7 +63,11 @@ const ArticleRequest = () => {
           <button onClick={openModal} className="btn btn-bv font request-font">
             REQUEST
           </button>
-          <Modal showModal={showModal} setShowModal={setShowModal} />
+          <Modal
+            showModal={showModal}
+            setShowModal={setShowModal}
+            onClose={() => setShowModal(false)}
+          />
         </div>
       </div>
     </div>
