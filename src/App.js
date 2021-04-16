@@ -9,6 +9,7 @@ import ArticleRequest from "./components/ArticleRequest";
 import SubmitArticle from "./components/SubmitArticle";
 import Home from "./components/Home";
 import AllView from "./components/AllView";
+import Footer from "./components/Footer";
 
 function App() {
   const ADMIN_PW = "kugelis";
@@ -85,31 +86,32 @@ function App() {
         </div>
       </div>
       <div className="background">
-      <div className="container">
-        <div className="row mt-5 ">
-          <div className="offset-1 col-10 ">
-            <div className="row resultBoxArticle">
-              <Switch>
-                <Route path="/request">
-                  <ArticleRequest />
-                </Route>
-                <Route path="/all">
-                  <AllView result={result} />
-                </Route>
-                <Route path="/article/:id">
-                  <SingleArticlePage />
-                </Route>
-                <Route path="/submit">
-                  <SubmitArticle />
-                </Route>
-                <Route exact path="/">
-                  <Home result={result} />
-                </Route>
-              </Switch>
+        <div className="container-main">
+          <div className="row mt-5 ">
+            <div className="offset-1 col-10 ">
+              <div className="row resultBoxArticle">
+                <Switch>
+                  <Route path="/request">
+                    <ArticleRequest />
+                  </Route>
+                  <Route path="/all">
+                    <AllView result={result} />
+                  </Route>
+                  <Route path="/article/:id">
+                    <SingleArticlePage />
+                  </Route>
+                  <Route path="/submit">
+                    <SubmitArticle />
+                  </Route>
+                  <Route exact path="/">
+                    <Home result={result} />
+                  </Route>
+                </Switch>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+        <Footer />
       </div>
     </SearchContext.Provider>
   );

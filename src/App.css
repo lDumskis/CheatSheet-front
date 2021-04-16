@@ -388,7 +388,7 @@
   box-shadow: 0px 2px 5px gray;
   max-height: fit-content;
   background-color: #f4f4f4;
-  padding: 15px;
+  padding: 30px;
 }
 
 .modal-styles {
@@ -452,5 +452,24 @@
   background-attachment: fixed;
 }
 .container {
+  padding-bottom: 10px;
+}
+.container-main {
   padding-top: 1px;
+  padding-bottom: 50px;
+  width: 70%;
+  margin: auto;
+  min-height: 65vh;
+}
+.footer {
+  background-color:#002E6E;
+  height: 90px;
+  color: white;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+}
+.footer img {
+  padding-top: 10px;
+  padding-left: 30px;
 }
