@@ -7,6 +7,7 @@ const ArticleRequest = () => {
   const [showModal, setShowModal] = useState(false);
   const [email, setEmail] = useState("");
   const [request, setRequest] = useState("");
+  const [requestModal, setRequestModal] = useState(false);
 
   const openModal = () => {
     axios.post("https://wtdback.qa.bazaarvoice.com/api/", {
@@ -20,6 +21,7 @@ const ArticleRequest = () => {
       t: [],
     });
     setShowModal((prev) => !prev);
+    setRequestModal(true);
   };
 
   return (
@@ -60,13 +62,14 @@ const ArticleRequest = () => {
       </div>
       <div className="row mt-4 ">
         <div className="offset-9 col-4">
-          <button onClick={openModal} className="btn btn-bv font request-font">
+          <button onClick={openModal} className="btn btn-bv font request-font" id="requestModal">
             REQUEST
           </button>
           <Modal
             showModal={showModal}
             setShowModal={setShowModal}
             onClose={() => setShowModal(false)}
+            requestModal={requestModal}
           />
         </div>
       </div>

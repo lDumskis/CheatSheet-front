@@ -4,6 +4,7 @@ import "./index.css";
 import LinkInput from "../common/LinkInput";
 import SearchContext from "../../context/SearchContext";
 import Select from "react-dropdown-select";
+import Modal from "../common/Modal";
 
 const SubmitArticle = () => {
   const [links, setLinks] = useState([""]);
@@ -12,6 +13,8 @@ const SubmitArticle = () => {
   const [answer, setAnswer] = useState();
   const [question, setQuestion] = useState();
   const [email, setEmail] = useState();
+  const [showModal, setShowModal] = useState(false);
+  const [requestModal, setRequestModal] = useState(false);
 
   const { tags } = useContext(SearchContext);
 
@@ -28,6 +31,8 @@ const SubmitArticle = () => {
         t: newTags,
         l: links,
       });
+      setShowModal((prev) => !prev);
+      setRequestModal(false);
     } catch (error) {}
   }
 
@@ -102,6 +107,12 @@ const SubmitArticle = () => {
           >
             Submit
           </button>
+          <Modal
+            showModal={showModal}
+            setShowModal={setShowModal}
+            onClose={() => setShowModal(false)}
+            requestModal={requestModal}
+          />
         </div>
       </div>
     </div>

@@ -6,20 +6,42 @@ function refreshPage() {
   window.location.reload(false);
 }
 
-const Modal = ({ showModal, setShowModal, onClose }) => {
-  return (
+const Modal = ({ showModal, setShowModal, onClose, requestModal }) => {
+  if (requestModal===true){
+    return (
+      <>
+        {showModal ? (
+          <div className="modal-background" onClick={onClose}>
+            <div className="modal-styles helvetica-bold">
+              <span className="material-icons">done</span>
+              <span id="modal-thank-you">Thank you! We got your request.</span>
+              <div className="row-2">
+                <Link to="/">
+                  <button className="btn-modal-home">HOME</button>
+                </Link>
+                <button onClick={refreshPage} className="btn-modal-another">
+                  GOT ANOTHER REQUEST?
+                </button>
+              </div>
+            </div>
+          </div>
+        ) : null}
+      </>
+    );
+  }
+  else return (
     <>
       {showModal ? (
         <div className="modal-background" onClick={onClose}>
           <div className="modal-styles helvetica-bold">
             <span className="material-icons">done</span>
-            <span id="modal-thank-you">Thank you! We got your request.</span>
+            <span id="modal-thank-you">Thanks! Your article is published.</span>
             <div className="row-2">
               <Link to="/">
                 <button className="btn-modal-home">HOME</button>
               </Link>
               <button onClick={refreshPage} className="btn-modal-another">
-                GOT ANOTHER REQUEST?
+                PUBLISH ONE MORE!
               </button>
             </div>
           </div>
@@ -27,6 +49,7 @@ const Modal = ({ showModal, setShowModal, onClose }) => {
       ) : null}
     </>
   );
+
 };
 
 export default Modal;
