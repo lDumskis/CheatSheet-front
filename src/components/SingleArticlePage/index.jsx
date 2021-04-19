@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import "./index.css";
 import SearchContext from "../../context/SearchContext";
+import SubmitArticle from "../SubmitArticle";
 
 const SingleArticlePage = () => {
   const { isAdmin, setIsAdmin, ADMIN_PW } = useContext(SearchContext);
@@ -17,11 +18,18 @@ const SingleArticlePage = () => {
   const [article, setArticle] = useState([]);
   const [suggestion, setSuggestion] = useState("");
   const [classes, setClasses] = useState("row mt-4 d-none");
+  const [editPending, setEditPending] = useState(false);
   const myRef = useRef(null);
 
   useEffect(() => {
-    getAllArticles();
+    getArticle();
   }, []);
+
+  useEffect(() => {
+    if (article.suggested_a !== "") {
+      setEditPending(true);
+    }
+  }, [article]);
 
   useEffect(() => {
     if (admin) {
@@ -36,15 +44,16 @@ const SingleArticlePage = () => {
     }
   }, [admin]);
 
-  const getAllArticles = () => {
+  const getArticle = () => {
     axios.get(baseURLId).then((response) => {
-      console.log(baseURLId);
+      console.log(response.data);
+
       setArticle(response.data);
     });
   };
 
   function handleDelete() {
-    axios.delete("https://wtdback.qa.bazaarvoice.com/api/" + id);
+    axios.delete(baseURLId);
     //to add History back automation
   }
 
@@ -53,91 +62,35 @@ const SingleArticlePage = () => {
   }
 
   function handleSubmitChangeRequest() {
-    const current = article.a;
-    const newOne = suggestion;
+    axios.put(baseURLId, {
+      title: article.title,
+      q: article.q,
+      a: article.a,
+      n: 0,
+      isPublished: true,
+      email: article.email,
+      nickname: "Default",
+      t: article.t,
+      l: article.l,
+      suggested_a: suggestion,
+    });
   }
 
   useEffect(() => {
-    myRef.current.scrollIntoView();
-    setSuggestion(article.a);
+    try {
+      myRef.current.scrollIntoView();
+      setSuggestion(article.a);
+    } catch (e) {}
   }, [classes]);
 
   if (admin && isAdmin) {
     return (
       <div className="row">
-        <div className="col">
-          <div>
-            <h2 className="resultHeaderArticle bg-light p-2 helvetica-medium bv-blue-text">
-              {article.title}
-            </h2>
-            <div className="row">
-              <div className="offset-6 col-3 langFlags">
-                <p>
-                  <span role="img" aria-label="french-flag">
-                    🇺🇸
-                  </span>
-                </p>
-                <p>
-                  <span role="img" aria-label="french-flag">
-                    🇫🇷
-                  </span>
-                </p>
-                <p>
-                  <span role="img" aria-label="germany-flag">
-                    🇩🇪
-                  </span>
-                </p>
-              </div>
-            </div>
-            <div className="resultSnippetArticle row mt-3">
-              <div className="col-8">
-                <div className="answerTarget">
-                  <textarea
-                    rows="20"
-                    cols="60"
-                    className="answerField helvetica"
-                    value={article.a}
-                  />
-                  <div className="row">
-                    <div className="col-4">
-                      <p className="authorDisclaimer">
-                        <em>Written by {article.nickname}</em>
-                      </p>
-                    </div>
-                    <div
-                      onClick={() => handleDelete()}
-                      className="offset-6 col-1"
-                    >
-                      X
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className=" col-4">
-                <div className="knowMore alight-baseline">
-                  <div class="centerButtons">
-                    <h3>Supporting Material</h3>
-                    <a href="#" className="btn mt-3 px-3 btn-bv btn-support">
-                      Knowledge base
-                    </a>
-                    <br />
-                    <a href="#" className="btn mt-3 px-3 btn-bv btn-support">
-                      Confluenza base
-                    </a>
-                    <br />
-                    <a href="#" className="btn mt-3 px-5 btn-bv btn-support">
-                      TestPage
-                    </a>
-                    <br />
-                    <a href="#" className="btn mt-3 px-3 btn-bv btn-support">
-                      MoreStuff base
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <SubmitArticle
+          update={true}
+          article={article}
+          handleDelete={handleDelete}
+        />
       </div>
     );
   } else {

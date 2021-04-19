@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import "./index.css";
 import LinkInput from "../common/LinkInput";
@@ -6,7 +6,7 @@ import SearchContext from "../../context/SearchContext";
 import Select from "react-dropdown-select";
 import Modal from "../common/Modal";
 
-const SubmitArticle = () => {
+const SubmitArticle = ({ update, article, handleDelete }) => {
   const [links, setLinks] = useState([""]);
   const [newTags, setNewTags] = useState();
   const [title, setTitle] = useState();
@@ -21,7 +21,7 @@ const SubmitArticle = () => {
   function SubmitNewArticle() {
     try {
       axios.post("https://wtdback.qa.bazaarvoice.com/api/", {
-        title: "Requested Post",
+        title: title,
         q: question,
         a: answer,
         n: 0,
@@ -36,10 +36,35 @@ const SubmitArticle = () => {
     } catch (error) {}
   }
 
+  function UpdateArticle() {
+    axios.put("https://wtdback.qa.bazaarvoice.com/api/" + article.id, {
+      title: title,
+      q: question,
+      a: answer,
+      n: 0,
+      isPublished: true,
+      email: email,
+      nickname: "Default",
+      t: newTags,
+      l: links,
+      suggested_a: "",
+    });
+  }
+
+  useEffect(() => {
+    if (update) {
+      setTitle(article.title);
+      setQuestion(article.q);
+      setAnswer(article.a);
+      setEmail(article.email);
+      //article.t && setNewTags(article.t);
+    }
+  }, [article.t]);
+
   return (
     <div className="ms-3 ps-5 pe-5" id="submissionForm">
       <h2 className="card-title text-center display-5 pageTitle helvetica-medium">
-        Create an Article
+        {update ? "Update " : "Create"} an Article
       </h2>
       <div className="row">
         <div className="col-9">
@@ -47,15 +72,15 @@ const SubmitArticle = () => {
             placeholder="Question Title"
             id="articleTitle"
             className="form-control titleField"
-            value={question}
-            onChange={(e) => setQuestion(e.target.value)}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
           <input
             placeholder="Detailed question"
             id="Question details"
             className="form-control titleField"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            value={question}
+            onChange={(e) => setQuestion(e.target.value)}
           />
           <textarea
             id="subArticle"
@@ -78,10 +103,10 @@ const SubmitArticle = () => {
               keepSelectedInList={true}
               searchable={true}
               create={true}
+              values={article.t ? [...article.t] : ""}
               onChange={(values) => setNewTags(values)}
             />
           </div>
-
           <div className="mt-auto">
             <input
               id="RequesterEmail"
@@ -99,9 +124,17 @@ const SubmitArticle = () => {
         </div>
       </div>
       <div className="row justify-content-end">
-        <div className="mt-2 offset-10 col-2">
+        <div className="col-2 mt-2">
           <button
-            onClick={() => SubmitNewArticle()}
+            onClick={() => handleDelete()}
+            className="btn btn-bv edit-icon"
+          >
+            <i className="fas fa-trash"></i>
+          </button>
+        </div>
+        <div className="mt-2 offset-8 col-2">
+          <button
+            onClick={() => (update ? UpdateArticle() : SubmitNewArticle())}
             id="submit"
             className="btn btn-success"
           >

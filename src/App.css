@@ -457,12 +457,11 @@
 .container-main {
   padding-top: 1px;
   padding-bottom: 50px;
-  width: 70%;
   margin: auto;
   min-height: 65vh;
 }
 .footer {
-  background-color:#002E6E;
+  background-color: #002e6e;
   height: 90px;
   color: white;
   left: 0px;
