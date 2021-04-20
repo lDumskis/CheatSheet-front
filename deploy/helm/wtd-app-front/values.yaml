@@ -1,20 +1,19 @@
-
 bosun-simple-app:
   bosun:
-    name: "wtd-app-front"
-    team: "hackathon"
+    name: "cheatsheet"
+    team: "technicalsuccess"
     gitrepo: "wtd-app-front"
     fullnameOverride: ""
     buildFQDN: true
 
   container:
     repository: "549050352176.dkr.ecr.us-east-1.amazonaws.com/wtd-app-front"
-    tag: "v0.0.1"
+    tag: "0.0.1"
     replicaCount: 2
     port: 8080
     # env:
-      # - name:
-      #   value:
+    # - name:
+    #   value:
     pullPolicy: Always
     pullSecrets: []
     podAnnotations:
@@ -45,7 +44,7 @@ bosun-simple-app:
     create: true
     privileged: false
     writablefs: true
-    name: "wtd-app-front"
+    name: "cheatsheet"
 
   service:
     type: ClusterIP
@@ -55,7 +54,7 @@ bosun-simple-app:
     enabled: false
     class: private
     tlsIssuer: letsencrypt-environment-subdomain
-    host: "wtd-app-front"
+    host: "cheatsheet"
     path: /
     annotations: {}
 
@@ -67,7 +66,8 @@ bosun-simple-app:
       cpu: 100m
       memory: 64Mi
 
-  podSecurityContext: {}
+  podSecurityContext:
+    {}
     # runAsUser: 1001
     # runAsGroup: 1001
     # fsGroup: 1001

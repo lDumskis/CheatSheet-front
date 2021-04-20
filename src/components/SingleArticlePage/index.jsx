@@ -20,6 +20,8 @@ const SingleArticlePage = () => {
   const [classes, setClasses] = useState("row mt-4 d-none");
   const [editPending, setEditPending] = useState(false);
   const myRef = useRef(null);
+  const [show, setShow] = useState(false);
+  const [show1, setShow1] = useState(false);
 
   useEffect(() => {
     getArticle();
@@ -74,6 +76,10 @@ const SingleArticlePage = () => {
       l: article.l,
       suggested_a: suggestion,
     });
+    setShow1(true);
+    setTimeout(() => {
+      setShow1(false);
+    }, 1000);
   }
 
   useEffect(() => {
@@ -82,6 +88,14 @@ const SingleArticlePage = () => {
       setSuggestion(article.a);
     } catch (e) {}
   }, [classes]);
+
+  function handleCopy() {
+    navigator.clipboard.writeText(article.a);
+    setShow(true);
+    setTimeout(() => {
+      setShow(false);
+    }, 1000);
+  }
 
   if (admin && isAdmin) {
     return (
@@ -141,9 +155,7 @@ const SingleArticlePage = () => {
                       </div>
                       <div className="offset-1 col-3">
                         <button
-                          onClick={() =>
-                            navigator.clipboard.writeText(article.a)
-                          }
+                          onClick={() => handleCopy()}
                           className="btn btn-bv copy-icon"
                         >
                           Copy <i className="far fa-clone"></i>
@@ -204,6 +216,16 @@ const SingleArticlePage = () => {
             </button>
           </div>
         </div>
+        {show && (
+          <div className="alert alert-primary copied-alert" role="alert">
+            Text was officially Copied
+          </div>
+        )}
+        {show1 && (
+          <div className="alert alert-primary copied-alert" role="alert">
+            Request Submitted
+          </div>
+        )}
       </>
     );
   }

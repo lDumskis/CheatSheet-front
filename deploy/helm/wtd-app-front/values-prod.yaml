@@ -7,6 +7,6 @@ bosun-simple-app:
     enabled: true
     class: private
     tlsIssuer: letsencrypt-environment-subdomain
-    host: "wtd-app-front"
+    host: "cheatsheet"
     path: /
     annotations: {}

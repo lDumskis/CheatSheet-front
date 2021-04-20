@@ -472,3 +472,9 @@
   padding-top: 10px;
   padding-left: 30px;
 }
+.copied-alert {
+  position: fixed;
+  bottom: 5px;
+  right: 2%;
+  width: 30%;
+}

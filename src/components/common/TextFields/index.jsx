@@ -4,9 +4,17 @@ import SearchContext from "../../../context/SearchContext";
 import "./index.css";
 import Tag from "../Tag";
 
-const TextFields = ({ info, access }) => {
+const TextFields = ({ info, access, setShowAlert }) => {
   const { setSTAgs, sTags } = useContext(SearchContext);
   let theID = "";
+
+  function handleCopy() {
+    navigator.clipboard.writeText(info.a);
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 1000);
+  }
 
   access === "admin" ? (theID = info.id + "+") : (theID = info.id);
   return (
@@ -32,7 +40,7 @@ const TextFields = ({ info, access }) => {
             </div>
             <div className="copy-in-text-field">
               <button
-                onClick={() => navigator.clipboard.writeText(info.a)}
+                onClick={() => handleCopy()}
                 className="btn btn-bv copy-icon"
               >
                 <i className="far fa-clone"></i>
