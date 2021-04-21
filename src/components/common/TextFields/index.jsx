@@ -46,6 +46,14 @@ const TextFields = ({ info, access, setShowAlert }) => {
                 <i className="far fa-clone"></i>
               </button>
             </div>
+            <div className="delete-post">
+              
+              <button
+                className="btn btn-bv copy-icon"
+              >
+                <i className="far fa-trash-alt"></i>
+              </button>
+            </div>          
           </div>
         </div>
       </div>
