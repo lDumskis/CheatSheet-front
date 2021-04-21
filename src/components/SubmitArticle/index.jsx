@@ -6,7 +6,7 @@ import SearchContext from "../../context/SearchContext";
 import Select from "react-dropdown-select";
 import Modal from "../common/Modal";
 
-const SubmitArticle = ({ update, article, handleDelete }) => {
+const SubmitArticle = ({ update = false, article, handleDelete }) => {
   const [links, setLinks] = useState([""]);
   const [newTags, setNewTags] = useState();
   const [title, setTitle] = useState();
@@ -59,7 +59,7 @@ const SubmitArticle = ({ update, article, handleDelete }) => {
       setEmail(article.email);
       //article.t && setNewTags(article.t);
     }
-  }, [article.t]);
+  }, [article ? article.t : update]);
 
   return (
     <div className="ms-3 ps-5 pe-5" id="submissionForm">
@@ -94,18 +94,33 @@ const SubmitArticle = ({ update, article, handleDelete }) => {
         </div>
         <div className="col-3 d-flex flex-column justify-content-between">
           <div className="input-group mb-1">
-            <Select
-              multi={true}
-              options={tags}
-              searchBy={tags.tag}
-              labelField="tag"
-              valueField="tag"
-              keepSelectedInList={true}
-              searchable={true}
-              create={true}
-              values={article.t ? [...article.t] : ""}
-              onChange={(values) => setNewTags(values)}
-            />
+            {update && (
+              <Select
+                multi={true}
+                options={tags}
+                searchBy={tags.tag}
+                labelField="tag"
+                valueField="tag"
+                keepSelectedInList={true}
+                searchable={true}
+                create={true}
+                values={article.t ? [...article.t] : ""}
+                onChange={(values) => setNewTags(values)}
+              />
+            )}
+            {update === false && (
+              <Select
+                multi={true}
+                options={tags}
+                searchBy={tags.tag}
+                labelField="tag"
+                valueField="tag"
+                keepSelectedInList={true}
+                searchable={true}
+                create={true}
+                onChange={(values) => setNewTags(values)}
+              />
+            )}
           </div>
           <div className="mt-auto">
             <input
