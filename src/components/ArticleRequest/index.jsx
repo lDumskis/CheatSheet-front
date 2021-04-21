@@ -8,9 +8,14 @@ const ArticleRequest = () => {
   const [email, setEmail] = useState("");
   const [request, setRequest] = useState("");
   const [requestModal, setRequestModal] = useState(false);
+  const [emptyRequest, setEmptyRequest] = useState("form-control requestQuestion");
 
   const openModal = () => {
-    axios.post("https://wtdback.qa.bazaarvoice.com/api/", {
+    if (request === "") {
+      setEmptyRequest("form-control emptyRequestQuestion")
+    }
+    else {
+      axios.post("https://wtdback.qa.bazaarvoice.com/api/", {
       title: "Requested Post",
       q: request,
       a: " ",
@@ -22,6 +27,7 @@ const ArticleRequest = () => {
     });
     setShowModal((prev) => !prev);
     setRequestModal(true);
+    }
   };
 
   return (
@@ -34,10 +40,11 @@ const ArticleRequest = () => {
           <textarea
             id="requestQuestion"
             type="text"
-            className="form-control requestQuestion"
+            className={emptyRequest}
             placeholder="Add as many details as you can."
             value={request}
             onChange={(e) => setRequest(e.target.value)}
+            onInput={() => setEmptyRequest("form-control requestQuestion")}
           />
         </div>
         <div className="col-3 d-flex flex-column justify-content-between">

@@ -34,3 +34,12 @@
   margin-top: -30px;
   margin-left: 13px;
 }
+.delete-post{
+  text-align: right;
+  margin-top: -43px;
+  margin-left: -42px;
+  margin-bottom: 5px;
+}
+.fa-trash-alt{
+  padding: 1px;
+}
