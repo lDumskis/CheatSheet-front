@@ -8,7 +8,7 @@ bosun-simple-app:
 
   container:
     repository: "549050352176.dkr.ecr.us-east-1.amazonaws.com/what-to-do-app-front"
-    tag: "0.0.5"
+    tag: "0.0.6"
     replicaCount: 2
     port: 8080
     # env:
@@ -31,13 +31,13 @@ bosun-simple-app:
     livenessProbe:
       httpGet:
         port: 8080
-        path: /index.html
+        path: /
       initialDelaySeconds: 10
     readinessProbe:
       httpGet:
         port: 8080
-        path: /index.html
-    healthCheck: /index.html
+        path: /
+    healthCheck: /
     healthCheckPort: 8080
 
   serviceAccount:
