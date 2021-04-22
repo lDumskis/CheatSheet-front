@@ -5,8 +5,3 @@ bosun-simple-app:
 
   ingress:
     enabled: true
-    class: private
-    tlsIssuer: letsencrypt-environment-subdomain
-    host: "cheatsheet"
-    path: /
-    annotations: {}

@@ -8,7 +8,7 @@ bosun-simple-app:
 
   container:
     repository: "549050352176.dkr.ecr.us-east-1.amazonaws.com/what-to-do-app-front"
-    tag: "0.0.4"
+    tag: "0.0.5"
     replicaCount: 2
     port: 8080
     # env:
@@ -27,7 +27,7 @@ bosun-simple-app:
     volumeMounts:
       - name: tmp
         mountPath: /tmp
-    livenessDelay: 10
+    livenessDelay: 400
     livenessProbe:
       httpGet:
         port: 8080
@@ -51,7 +51,7 @@ bosun-simple-app:
     port: 80
 
   ingress:
-    enabled: false
+    enabled: enabled
     class: private
     tlsIssuer: letsencrypt-environment-subdomain
     host: "cheatsheet"
@@ -61,10 +61,10 @@ bosun-simple-app:
   resources:
     limits:
       cpu: 200m
-      memory: 128Mi
+      memory: 750Mi
     requests:
       cpu: 100m
-      memory: 64Mi
+      memory: 240Mi
 
   podSecurityContext:
     {}

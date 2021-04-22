@@ -13,3 +13,4 @@ Makefile
 Makefile.version
 
 deploy/
+node_modules/
