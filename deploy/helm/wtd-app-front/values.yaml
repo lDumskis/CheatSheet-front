@@ -10,7 +10,7 @@ bosun-simple-app:
     repository: "549050352176.dkr.ecr.us-east-1.amazonaws.com/what-to-do-app-front"
     tag: "0.0.6"
     replicaCount: 2
-    port: 80
+    port: 8080
     # env:
     # - name:
     #   value:
@@ -30,15 +30,15 @@ bosun-simple-app:
     livenessDelay: 400
     livenessProbe:
       httpGet:
-        port: 80
+        port: 8080
         path: /
       initialDelaySeconds: 10
     readinessProbe:
       httpGet:
-        port: 80
+        port: 8080
         path: /
     healthCheck: /
-    healthCheckPort: 80
+    healthCheckPort: 8080
 
   serviceAccount:
     create: true
@@ -48,7 +48,7 @@ bosun-simple-app:
 
   service:
     type: ClusterIP
-    port: 80
+    port: 8080
 
   ingress:
     enabled: enabled
