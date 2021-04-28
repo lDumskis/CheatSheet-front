@@ -1,8 +1,8 @@
-FROM node:alpine as react_build 
+FROM andthensome/alpine-node-bash as react_build 
 #also say 
 WORKDIR /app
 #copy the react app to the container
-COPY . . 
+COPY . .
 
 # #prepare the contiainer for building react 
 RUN npm install --silent
@@ -15,9 +15,9 @@ FROM nginxinc/nginx-unprivileged
 USER root
 COPY --from=react_build /app/build /usr/share/nginx/html
 RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx/nginx.conf /etc/nginx/conf.d
+COPY ./nginx/nginx.conf /etc/nginx/conf.d
+EXPOSE 8080 
 USER 101
 
 #fire up nginx
-EXPOSE 8080 
 CMD ["nginx","-g","daemon off;"]
