@@ -2,3 +2,6 @@ bosun-simple-app:
   bosun:
     region: us-east-1
     vpc: prod
+
+  ingress:
+    enabled: true

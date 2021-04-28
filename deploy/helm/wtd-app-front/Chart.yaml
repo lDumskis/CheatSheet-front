@@ -1,9 +1,0 @@
-apiVersion: v2
-icon: https://www.bazaarvoice.com/favicon.ico
-name: wtd-app-front
-description:
-version: 0.0.1
-dependencies:
-- name: bosun-simple-app
-  version: 2.0.1
-  repository: "@bv-stable"

@@ -1,21 +1,19 @@
-
 bosun-simple-app:
   bosun:
-    name: "what-to-do-app-front"
+    name: "cheatsheet"
     team: "technicalsuccess"
     gitrepo: "what-to-do-app-front"
     fullnameOverride: ""
     buildFQDN: true
-    forcePodRollWhenHelm: true
 
   container:
     repository: "549050352176.dkr.ecr.us-east-1.amazonaws.com/what-to-do-app-front"
-    tag: "v0.0.1"
+    tag: "0.0.6"
     replicaCount: 2
     port: 8080
     # env:
-      # - name:
-      #   value:
+    # - name:
+    #   value:
     pullPolicy: Always
     pullSecrets: []
     podAnnotations:
@@ -29,46 +27,47 @@ bosun-simple-app:
     volumeMounts:
       - name: tmp
         mountPath: /tmp
-    livenessDelay: 10
+    livenessDelay: 400
     livenessProbe:
       httpGet:
         port: 8080
-        path: /index.html
+        path: /
       initialDelaySeconds: 10
     readinessProbe:
       httpGet:
         port: 8080
-        path: /index.html
-    healthCheck: /index.html
+        path: /
+    healthCheck: /
     healthCheckPort: 8080
 
   serviceAccount:
     create: true
     privileged: false
     writablefs: true
-    name: "what-to-do-app-front"
+    name: "cheatsheet"
 
   service:
     type: ClusterIP
-    port: 80
+    port: 8080
 
   ingress:
-    enabled: true
+    enabled: enabled
     class: private
     tlsIssuer: letsencrypt-environment-subdomain
-    host: "what-to-do-app-front"
+    host: "cheatsheet"
     path: /
     annotations: {}
 
   resources:
     limits:
       cpu: 200m
-      memory: 128Mi
+      memory: 750Mi
     requests:
       cpu: 100m
-      memory: 64Mi
+      memory: 240Mi
 
-  podSecurityContext: {}
+  podSecurityContext:
+    {}
     # runAsUser: 1001
     # runAsGroup: 1001
     # fsGroup: 1001
