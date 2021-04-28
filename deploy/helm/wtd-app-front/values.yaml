@@ -8,7 +8,7 @@ bosun-simple-app:
 
   container:
     repository: "549050352176.dkr.ecr.us-east-1.amazonaws.com/what-to-do-app-front"
-    tag: "0.0.6"
+    tag: "0.0.16"
     replicaCount: 2
     port: 8080
     # env:
