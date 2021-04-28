@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import SearchContext from "./context/SearchContext";
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import axios from "axios";
+import SearchContext from "./context/SearchContext";
 import Header from "./components/Header";
 import SingleArticlePage from "./components/SingleArticlePage";
 import ArticleRequest from "./components/ArticleRequest";
