@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import axios from "axios";
-import SearchContext from "./context/SearchContext";
+import SearchContext from "./context/SearchContext.jsx";
 import Header from "./components/Header";
 import SingleArticlePage from "./components/SingleArticlePage";
 import ArticleRequest from "./components/ArticleRequest";
