@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import SearchContext from "../../../context/SearchContext";
 import "./index.css";
 import Tag from "../Tag";
+import axios from "axios";
 
-const TextFields = ({ info, access, setShowAlert }) => {
+const TextFields = ({ info, access, setShowAlert, result, setResult }) => {
   const { setSTAgs, sTags } = useContext(SearchContext);
   let theID = "";
-
+  const baseURLId = "https://wtdback.qa.bazaarvoice.com/api/" + info.id;
   function handleCopy() {
     navigator.clipboard.writeText(info.a);
     setShowAlert(true);
@@ -17,6 +18,19 @@ const TextFields = ({ info, access, setShowAlert }) => {
   }
 
   access === "admin" ? (theID = info.id + "+") : (theID = info.id);
+
+  function handleDelete() {
+    console.log(info.id);
+    console.log(info);
+    console.log(result);
+
+    let newArray = result.filter((x) => {
+      return x.id != info.id;
+    });
+    axios.delete(baseURLId);
+    setResult(newArray);
+  }
+
   return (
     <div className="col-6 mt-4">
       <div className="resultBox">
@@ -46,14 +60,16 @@ const TextFields = ({ info, access, setShowAlert }) => {
                 <i className="far fa-clone"></i>
               </button>
             </div>
-            <div className="delete-post">
-              
-              <button
-                className="btn btn-bv copy-icon"
-              >
-                <i className="far fa-trash-alt"></i>
-              </button>
-            </div>          
+            {access === "admin" && (
+              <div className="delete-post">
+                <button
+                  onClick={() => handleDelete()}
+                  className="btn btn-bv copy-icon"
+                >
+                  <i className="far fa-trash-alt"></i>
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@ import SelectedTags from "../SelectedTags";
 import TextFields from "../common/TextFields";
 import SearchContext from "../../context/SearchContext";
 
-const AllView = ({ result }) => {
+const AllView = ({ result, setResult }) => {
   const { isAdmin, setIsAdmin, ADMIN_PW } = useContext(SearchContext);
 
   useEffect(() => {
@@ -23,8 +23,15 @@ const AllView = ({ result }) => {
       <h2 className="center-h1 bv-blue-text">Requested</h2>
       {result.map(
         (article) =>
-          !article.isPublished &&
-          isAdmin && <TextFields info={article} access="admin" />
+          (!article.isPublished || article.suggested_a !== "") &&
+          isAdmin && (
+            <TextFields
+              info={article}
+              result={result}
+              setResult={setResult}
+              access="admin"
+            />
+          )
       )}
 
       <hr />
@@ -37,7 +44,7 @@ const AllView = ({ result }) => {
       </h2>
       {result.map(
         (article) =>
-          article.isPublished &&
+          (article.isPublished || article.suggested_a === "") &&
           isAdmin && <TextFields info={article} access="admin" />
       )}
     </>

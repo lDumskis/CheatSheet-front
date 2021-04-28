@@ -95,7 +95,7 @@ function App() {
                     <ArticleRequest />
                   </Route>
                   <Route path="/all">
-                    <AllView result={result} />
+                    <AllView result={result} setResult={setResult} />
                   </Route>
                   <Route path="/article/:id">
                     <SingleArticlePage />

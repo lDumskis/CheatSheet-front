@@ -3,12 +3,12 @@ bosun-simple-app:
     name: "cheatsheet"
     team: "technicalsuccess"
     gitrepo: "what-to-do-app-front"
-    fullnameOverride: ""
+    fullnameOverride: "cheatsheet"
     buildFQDN: true
 
   container:
     repository: "549050352176.dkr.ecr.us-east-1.amazonaws.com/what-to-do-app-front"
-    tag: "0.0.16"
+    tag: "0.0.17"
     replicaCount: 2
     port: 8080
     # env:
