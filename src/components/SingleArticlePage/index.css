@@ -17,7 +17,6 @@
   padding: 15px;
   margin-left: 10px;
 }
-
 .knowMore {
   background-image: url("../../images/buttons_background.svg");
   padding: 30px 30px 40px 30px;
@@ -26,9 +25,11 @@
   width: 100%;
   height: 100%;
 }
-
 .knowMore .centerButtons {
   text-align: center;
+}
+.px-6 {
+  width: 230px;
 }
 
 .langFlags p {
