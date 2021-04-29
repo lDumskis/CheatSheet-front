@@ -1,5 +1,6 @@
 .pageTitle {
   color: #7b89f4 !important;
+  margin-bottom: 40px;
 }
 #submit {
   background-color: #7b89f4;
@@ -24,6 +25,7 @@
 .titleField {
   border-radius: 12px;
   box-shadow: 1px 1px 1px rgb(165, 164, 164);
+  margin-bottom: 20px;
 }
 .articleBody {
   border-radius: 20px !important;

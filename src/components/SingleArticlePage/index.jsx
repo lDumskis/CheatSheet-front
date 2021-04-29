@@ -164,23 +164,23 @@ const SingleArticlePage = () => {
                     </div>
                   </div>
                 </div>
-                <div className=" col-4">
+                <div className="col-4">
                   <div className="knowMore alight-baseline">
                     <div class="centerButtons">
                       <h3>Supporting Material</h3>
-                      <a href="#" className="btn mt-3 px-3 btn-bv btn-support">
+                      <a href="#" className="btn mt-5 px-6 btn-bv btn-support">
                         Knowledge base
                       </a>
                       <br />
-                      <a href="#" className="btn mt-3 px-3 btn-bv btn-support">
+                      <a href="#" className="btn mt-4 px-6 btn-bv btn-support">
                         Confluenza base
                       </a>
                       <br />
-                      <a href="#" className="btn mt-3 px-5 btn-bv btn-support">
+                      <a href="#" className="btn mt-4 px-6 btn-bv btn-support">
                         TestPage
                       </a>
                       <br />
-                      <a href="#" className="btn mt-3 px-3 btn-bv btn-support">
+                      <a href="#" className="btn mt-4 px-6 btn-bv btn-support">
                         MoreStuff base
                       </a>
                     </div>
