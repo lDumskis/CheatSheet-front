@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import SelectedTags from "../SelectedTags";
 import TextFields from "../common/TextFields";
 import SearchContext from "../../context/SearchContext";
