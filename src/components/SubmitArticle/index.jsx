@@ -15,25 +15,35 @@ const SubmitArticle = ({ update = false, article, handleDelete }) => {
   const [email, setEmail] = useState();
   const [showModal, setShowModal] = useState(false);
   const [requestModal, setRequestModal] = useState(false);
+  const [emptyTitle, setEmptyTitle] = useState("articleTitle");
+  const [emptyQuestionDetails, setEmptyQuestionDetails] = useState("Question details");
 
   const { tags } = useContext(SearchContext);
 
   function SubmitNewArticle() {
-    try {
-      axios.post("https://wtdback.qa.bazaarvoice.com/api/", {
-        title: title,
-        q: question,
-        a: answer,
-        n: 0,
-        isPublished: true,
-        email: email,
-        nickname: "Default",
-        t: newTags,
-        l: links,
-      });
-      setShowModal((prev) => !prev);
-      setRequestModal(false);
-    } catch (error) {}
+    if (title === undefined) {
+      setEmptyTitle("articleEmptyTitle");
+      console.log(title);
+    } else if (question === undefined) {
+      setEmptyQuestionDetails("emptyQuestionDetails");
+    } else {
+      console.log(title);
+      try {
+        axios.post("https://wtdback.qa.bazaarvoice.com/api/", {
+          title: title,
+          q: question,
+          a: answer,
+          n: 0,
+          isPublished: true,
+          email: email,
+          nickname: "Default",
+          t: newTags,
+          l: links,
+        });
+        setShowModal((prev) => !prev);
+        setRequestModal(false);
+      } catch (error) {}
+    }
   }
 
   function UpdateArticle() {
@@ -70,17 +80,19 @@ const SubmitArticle = ({ update = false, article, handleDelete }) => {
         <div className="col-9">
           <input
             placeholder="Question Title"
-            id="articleTitle"
+            id={emptyTitle}
             className="form-control titleField"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            onInput={() => setEmptyTitle("articleTitle")}
           />
           <input
             placeholder="Detailed question"
-            id="Question details"
+            id={emptyQuestionDetails}
             className="form-control titleField"
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
+            onInput={() => setEmptyQuestionDetails("Question details")}
           />
           <textarea
             id="subArticle"

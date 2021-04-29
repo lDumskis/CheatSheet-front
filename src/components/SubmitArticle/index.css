@@ -40,3 +40,9 @@
   width: 100%;
   border: 1px;
 }
+#articleEmptyTitle {
+  border: 3px solid red;
+}
+#emptyQuestionDetails {
+  border: 3px solid red;
+}
