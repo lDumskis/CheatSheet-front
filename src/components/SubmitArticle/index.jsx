@@ -9,7 +9,7 @@ import Modal from "../common/Modal";
 const SubmitArticle = ({ update = false, article, handleDelete }) => {
   const [links, setLinks] = useState([""]);
   const [newTags, setNewTags] = useState();
-  const [title, setTitle] = useState();
+  const [title, setTitle] = useState("");
   const [answer, setAnswer] = useState();
   const [question, setQuestion] = useState();
   const [email, setEmail] = useState();
@@ -21,10 +21,10 @@ const SubmitArticle = ({ update = false, article, handleDelete }) => {
   const { tags } = useContext(SearchContext);
 
   function SubmitNewArticle() {
-    if (title === undefined) {
+    if (title === "") {
       setEmptyTitle("articleEmptyTitle");
       console.log(title);
-    } else if (question === undefined) {
+    } else if (question === "") {
       setEmptyQuestionDetails("emptyQuestionDetails");
     } else {
       console.log(title);
