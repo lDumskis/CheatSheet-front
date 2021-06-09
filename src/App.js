@@ -36,7 +36,7 @@ function App() {
   useEffect(() => {
     fetch("https://wtdback.qa.bazaarvoice.com/api/tags")
       .then((res) => res.json())
-      .then((data) => setTags(data));
+      .then((data) => setTags(data.filter((v,i,a)=>a.findIndex(t=>(t.tag === v.tag))===i)));
   }, []);
   //Tags field
   useEffect(() => {
