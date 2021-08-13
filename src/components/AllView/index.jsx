@@ -1,5 +1,4 @@
 import React, { useEffect, useContext } from "react";
-import SelectedTags from "../SelectedTags";
 import TextFields from "../common/TextFields";
 import SearchContext from "../../context/SearchContext";
 
@@ -19,7 +18,6 @@ const AllView = ({ result, setResult }) => {
 
   return (
     <>
-      <SelectedTags />
       <h2 className="center-h1 bv-blue-text">Requested</h2>
       {result.map(
         (article) =>

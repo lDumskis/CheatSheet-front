@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import "../../../App.css";
 import SearchContext from "../../../context/SearchContext";
 import Tag from "../../common/Tag";
@@ -6,7 +6,6 @@ import Tag from "../../common/Tag";
 export default function TagsSelector() {
   const { setSTAgs, sTags, tags } = useContext(SearchContext);
   const [visible, setVisible] = useState(6);
-
 
   const loadMoreTags = () => {
     setVisible(visible + 24);

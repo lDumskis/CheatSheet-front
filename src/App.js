@@ -10,6 +10,7 @@ import SubmitArticle from "./components/SubmitArticle";
 import Home from "./components/Home";
 import AllView from "./components/AllView";
 import Footer from "./components/Footer";
+import SelectedTags from "./components/SelectedTags";
 
 function App() {
   const ADMIN_PW = "kugelis";
@@ -34,12 +35,16 @@ function App() {
     });
   };
   useEffect(() => {
-    fetch("https://wtdback.qa.bazaarvoice.com/api/tags")
-      .then((res) => res.json())
-      .then((data) => setTags(data.filter((v,i,a)=>a.findIndex(t=>(t.tag === v.tag))===i)));
+    const arrayToBe = [];
+    articles.forEach((article) => article.t.forEach((t) => arrayToBe.push(t)));
+
+    setTags(
+      arrayToBe.filter((v, i, a) => a.findIndex((t) => t.tag === v.tag) === i)
+    );
   }, []);
   //Tags field
   useEffect(() => {
+    console.log(tags);
     let newArray = [];
     articles.forEach((element) => {
       element.t.forEach((tags) => {
@@ -85,10 +90,12 @@ function App() {
           <Header />
         </div>
       </div>
+
       <div className="background">
         <div className="container-main">
           <div className="row mt-5 ">
             <div className="offset-1 col-10 ">
+              <SelectedTags />
               <div className="row resultBoxArticle">
                 <Switch>
                   <Route path="/request">
