@@ -30,8 +30,14 @@
 .reqLabelOverride {
   color: black;
 }
-.emptyRequestQuestion{
+.emptyRequestQuestion {
   border: 3px solid red;
   height: 300px;
   font-size: 15px;
+}
+.thumbs {
+  margin-top: 10px;
+}
+.thumbsText {
+  font-size: 8px;
 }

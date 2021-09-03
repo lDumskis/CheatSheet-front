@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { useDropzone } from "react-dropzone";
 import axios from "axios";
 import "./index.css";
 import Modal from "../common/Modal";
@@ -8,25 +9,111 @@ const ArticleRequest = () => {
   const [email, setEmail] = useState("");
   const [request, setRequest] = useState("");
   const [requestModal, setRequestModal] = useState(false);
-  const [emptyRequest, setEmptyRequest] = useState("form-control requestQuestion");
+  const [emptyRequest, setEmptyRequest] = useState(
+    "form-control requestQuestion"
+  );
+
+  const baseStyle = {
+    flex: 1,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    padding: "20%",
+    borderWidth: 3,
+    borderRadius: 3,
+    borderColor: "#eeeeee",
+    borderStyle: "dashed",
+    backgroundColor: "#fafafa",
+    color: "#bdbdbd",
+    outline: "none",
+    transition: "border .24s ease-in-out",
+  };
+
+  const activeStyle = {
+    borderColor: "#2196f3",
+  };
+
+  const acceptStyle = {
+    borderColor: "#00e676",
+  };
+
+  const rejectStyle = {
+    borderColor: "#ff1744",
+  };
+
+  function StyledDropzone(props) {
+    const [files, setFiles] = useState([]);
+
+    const onDrop = useCallback((acceptedFiles) => {
+      setFiles(
+        acceptedFiles.map((file) =>
+          Object.assign(file, {
+            preview: URL.createObjectURL(file),
+          })
+        )
+      );
+    }, []);
+
+    const {
+      getRootProps,
+      getInputProps,
+      isDragActive,
+      isDragAccept,
+      isDragReject,
+    } = useDropzone({
+      onDrop,
+    });
+
+    const style = useMemo(
+      () => ({
+        ...baseStyle,
+        ...(isDragActive ? activeStyle : {}),
+        ...(isDragAccept ? acceptStyle : {}),
+        ...(isDragReject ? rejectStyle : {}),
+      }),
+      [isDragActive, isDragReject, isDragAccept]
+    );
+
+    const thumbs = files.map((file) => (
+      <div className="thumbs" key={file.name}>
+        <p className="thumbsText">{file.name}</p>
+      </div>
+    ));
+
+    useEffect(
+      () => () => {
+        files.forEach((file) => URL.revokeObjectURL(file.preview));
+      },
+      [files]
+    );
+
+    return (
+      <section>
+        <div {...getRootProps({ style })}>
+          <input {...getInputProps()} />
+          <div>Drag and drop your images here.</div>
+        </div>
+        <aside>{thumbs}</aside>
+      </section>
+    );
+  }
 
   const openModal = () => {
     if (request === "") {
-      setEmptyRequest("form-control emptyRequestQuestion")
-    }
-    else {
+      setEmptyRequest("form-control emptyRequestQuestion");
+    } else {
       axios.post("https://wtdback.qa.bazaarvoice.com/api/", {
-      title: "Requested Post",
-      q: request,
-      a: " ",
-      n: 0,
-      isPublished: false,
-      email: email,
-      nickname: "Default",
-      t: [],
-    });
-    setShowModal((prev) => !prev);
-    setRequestModal(true);
+        title: "Requested Post",
+        q: request,
+        a: " ",
+        n: 0,
+        isPublished: false,
+        email: email,
+        nickname: "Default",
+        t: [],
+      });
+      setShowModal((prev) => !prev);
+      setRequestModal(true);
     }
   };
 
@@ -48,9 +135,8 @@ const ArticleRequest = () => {
           />
         </div>
         <div className="col-3 d-flex flex-column justify-content-between">
-          <button className="rounded-circle attachButton">
-            <i className="fas fa-paperclip" />
-          </button>
+          <StyledDropzone />
+
           <input
             id="requesterEmail"
             placeholder="Your email *"
@@ -69,7 +155,11 @@ const ArticleRequest = () => {
       </div>
       <div className="row mt-4 ">
         <div className="offset-9 col-4">
-          <button onClick={openModal} className="btn btn-bv font request-font" id="requestModal">
+          <button
+            onClick={openModal}
+            className="btn btn-bv font request-font"
+            id="requestModal"
+          >
             REQUEST
           </button>
           <Modal
