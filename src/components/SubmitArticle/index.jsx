@@ -10,15 +10,22 @@ const SubmitArticle = ({ update = false, article, handleDelete }) => {
   const [links, setLinks] = useState([""]);
   const [newTags, setNewTags] = useState();
   const [title, setTitle] = useState("");
-  const [answer, setAnswer] = useState();
-  const [question, setQuestion] = useState();
-  const [email, setEmail] = useState();
+  const [title_fr, setTitle_fr] = useState("");
+  const [title_de, setTitle_de] = useState("");
+  const [answer, setAnswer] = useState("");
+  const [answer_fr, setAnswer_fr] = useState("");
+  const [answer_de, setAnswer_de] = useState("");
+  const [question, setQuestion] = useState("");
+  const [question_fr, setQuestion_fr] = useState("");
+  const [question_de, setQuestion_de] = useState("");
+  const [email, setEmail] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [requestModal, setRequestModal] = useState(false);
   const [emptyTitle, setEmptyTitle] = useState("articleTitle");
-  const [emptyQuestionDetails, setEmptyQuestionDetails] = useState("Question details");
+  const [emptyQuestionDetails, setEmptyQuestionDetails] =
+    useState("Question details");
 
-  const { tags } = useContext(SearchContext);
+  const { tags, setLanguage, language } = useContext(SearchContext);
 
   function SubmitNewArticle() {
     if (title === "") {
@@ -49,8 +56,14 @@ const SubmitArticle = ({ update = false, article, handleDelete }) => {
   function UpdateArticle() {
     axios.put("https://wtdback.qa.bazaarvoice.com/api/" + article.id, {
       title: title,
+      title_fr: title_fr,
+      title_de: title_de,
       q: question,
+      q_fr: question_fr,
+      q_de: question_de,
       a: answer,
+      a_fr: answer_fr,
+      a_de: answer_de,
       n: 0,
       isPublished: true,
       email: email,
@@ -64,10 +77,15 @@ const SubmitArticle = ({ update = false, article, handleDelete }) => {
   useEffect(() => {
     if (update) {
       setTitle(article.title);
+      setTitle_fr(article.title_fr);
+      setTitle_de(article.title_de);
       setQuestion(article.q);
+      setQuestion_de(article.q_de);
+      setQuestion_fr(article.q_fr);
       setAnswer(article.a);
+      setAnswer_fr(article.a_fr);
+      setAnswer_de(article.a_de);
       setEmail(article.email);
-      //article.t && setNewTags(article.t);
     }
   }, [article ? article.t : update]);
 
@@ -77,21 +95,56 @@ const SubmitArticle = ({ update = false, article, handleDelete }) => {
         {update ? "Update " : "Create"} an Article
       </h2>
       <div className="row">
+        <div className="offset-6 col-3 langFlags">
+          <p onClick={() => setLanguage("en")}>
+            <span role="img" aria-label="french-flag">
+              🇺🇸
+            </span>
+          </p>
+          <p onClick={() => setLanguage("fr")}>
+            <span role="img" aria-label="french-flag">
+              🇫🇷
+            </span>
+          </p>
+          <p onClick={() => setLanguage("de")}>
+            <span role="img" aria-label="germany-flag">
+              🇩🇪
+            </span>
+          </p>
+        </div>
+      </div>
+      <div className="row">
         <div className="col-9">
           <input
             placeholder="Question Title"
             id={emptyTitle}
             className="form-control titleField"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            value={
+              (language === "en" && title) ||
+              (language === "fr" && title_fr) ||
+              (language === "de" && title_de)
+            }
+            onChange={
+              (language === "en" && ((e) => setTitle(e.target.value))) ||
+              (language === "fr" && ((e) => setTitle_fr(e.target.value))) ||
+              (language === "de" && ((e) => setTitle_de(e.target.value)))
+            }
             onInput={() => setEmptyTitle("articleTitle")}
           />
           <input
             placeholder="Detailed question"
             id={emptyQuestionDetails}
             className="form-control titleField"
-            value={question}
-            onChange={(e) => setQuestion(e.target.value)}
+            value={
+              (language === "en" && question) ||
+              (language === "fr" && question_fr) ||
+              (language === "de" && question_de)
+            }
+            onChange={
+              (language === "en" && ((e) => setQuestion(e.target.value))) ||
+              (language === "fr" && ((e) => setQuestion_fr(e.target.value))) ||
+              (language === "de" && ((e) => setQuestion_de(e.target.value)))
+            }
             onInput={() => setEmptyQuestionDetails("Question details")}
           />
           <textarea
@@ -100,8 +153,16 @@ const SubmitArticle = ({ update = false, article, handleDelete }) => {
             className="form-control articleBody mt-2"
             placeholder="Add as many details as you can."
             style={{ resize: "none" }}
-            value={answer}
-            onChange={(e) => setAnswer(e.target.value)}
+            value={
+              (language === "en" && answer) ||
+              (language === "fr" && answer_fr) ||
+              (language === "de" && answer_de)
+            }
+            onChange={
+              (language === "en" && ((e) => setAnswer(e.target.value))) ||
+              (language === "fr" && ((e) => setAnswer_fr(e.target.value))) ||
+              (language === "de" && ((e) => setAnswer_de(e.target.value)))
+            }
           />
         </div>
         <div className="col-3 d-flex flex-column justify-content-between">

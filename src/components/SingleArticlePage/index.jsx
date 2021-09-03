@@ -6,7 +6,8 @@ import SearchContext from "../../context/SearchContext";
 import SubmitArticle from "../SubmitArticle";
 
 const SingleArticlePage = () => {
-  const { isAdmin, setIsAdmin, ADMIN_PW } = useContext(SearchContext);
+  const { isAdmin, setIsAdmin, ADMIN_PW, language, setLanguage } =
+    useContext(SearchContext);
 
   let { id } = useParams();
   let admin;
@@ -85,12 +86,20 @@ const SingleArticlePage = () => {
   useEffect(() => {
     try {
       myRef.current.scrollIntoView();
-      setSuggestion(article.a);
+      setSuggestion(
+        (language === "en" && article.a) ||
+          (language === "fr" && article.a_fr) ||
+          (language === "de" && article.a_de)
+      );
     } catch (e) {}
-  }, [classes]);
+  }, [classes, language]);
 
   function handleCopy() {
-    navigator.clipboard.writeText(article.a);
+    navigator.clipboard.writeText(
+      (language === "en" && article.a) ||
+        (language === "fr" && article.a_fr) ||
+        (language === "de" && article.a_de)
+    );
     setShow(true);
     setTimeout(() => {
       setShow(false);
@@ -114,31 +123,38 @@ const SingleArticlePage = () => {
           <div className="col">
             <div>
               <h2 className="resultHeaderArticle bg-light p-2 helvetica-medium bv-blue-text">
-                {article.title}
+                {language === "en" && article.title}
+                {language === "fr" && article.title_fr}
+                {language === "de" && article.title_de}
               </h2>
               <div className="row">
                 <div className="offset-6 col-3 langFlags">
-                  <p>
+                  <p onClick={() => setLanguage("en")}>
                     <span role="img" aria-label="french-flag">
                       🇺🇸
                     </span>
                   </p>
-                  <p>
+                  <p onClick={() => setLanguage("fr")}>
                     <span role="img" aria-label="french-flag">
                       🇫🇷
                     </span>
                   </p>
-                  <p>
+                  <p onClick={() => setLanguage("de")}>
                     <span role="img" aria-label="germany-flag">
                       🇩🇪
                     </span>
                   </p>
                 </div>
               </div>
+
               <div className="resultSnippetArticle row mt-3">
                 <div className="col-8">
                   <div className="answerTarget">
-                    <p className="answerField helvetica">{article.a}</p>
+                    <p className="answerField helvetica">
+                      {language === "en" && article.a}
+                      {language === "fr" && article.a_fr}
+                      {language === "de" && article.a_de}
+                    </p>
                     <div className="row">
                       <div className="col-4">
                         <p className="authorDisclaimer">

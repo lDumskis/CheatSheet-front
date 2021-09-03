@@ -22,6 +22,7 @@ function App() {
   const [sTags, setSTAgs] = useState([]);
   const [isAdmin, setIsAdmin] = useState(false);
   const [tags, setTags] = useState([]);
+  const [language, setLanguage] = useState("en");
 
   useEffect(() => {
     getAllArticles();
@@ -37,11 +38,13 @@ function App() {
   useEffect(() => {
     const arrayToBe = [];
     articles.forEach((article) => article.t.forEach((t) => arrayToBe.push(t)));
+    console.log(arrayToBe);
+    console.log(articles);
 
     setTags(
       arrayToBe.filter((v, i, a) => a.findIndex((t) => t.tag === v.tag) === i)
     );
-  }, []);
+  }, [articles]);
   //Tags field
   useEffect(() => {
     console.log(tags);
@@ -70,19 +73,21 @@ function App() {
   return (
     <SearchContext.Provider
       value={{
-        articles: articles,
-        setArticles: setArticles,
-        result: result,
-        setResult: setResult,
-        sTags: sTags,
-        setSTAgs: setSTAgs,
-        search: search,
-        setSearch: setSearch,
-        isAdmin: isAdmin,
-        setIsAdmin: setIsAdmin,
-        ADMIN_PW: ADMIN_PW,
-        tags: tags,
-        setTags: setTags,
+        articles,
+        setArticles,
+        result,
+        setResult,
+        sTags,
+        setSTAgs,
+        search,
+        setSearch,
+        isAdmin,
+        setIsAdmin,
+        ADMIN_PW,
+        tags,
+        setTags,
+        language,
+        setLanguage,
       }}
     >
       <div className="container-fluid p-2">
