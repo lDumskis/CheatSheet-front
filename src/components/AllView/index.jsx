@@ -11,7 +11,7 @@ const AllView = ({ result, setResult }) => {
       const username = prompt("Enter the username: ");
       const password = prompt("Enter the password: ");
       axios
-        .post("https://wtdback.qa.bazaarvoice.com//api/api-token-auth/", {
+        .post("https://wtdback.qa.bazaarvoice.com/api/api-token-auth/", {
           username: username,
           password: password,
         })
