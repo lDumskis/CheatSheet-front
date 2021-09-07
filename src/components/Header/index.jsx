@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../../App.css";
 import { Link } from "react-router-dom";
 import SearchField from "./SearchField";
 import TagsSelector from "./TagsSelector/TagsSelector";
+import SearchContext from "../../context/SearchContext";
 
 const Header = () => {
+  const { isAdmin, setIsAdmin, setToken } = useContext(SearchContext);
+
+  function handleLogout() {
+    setToken("");
+    setIsAdmin(false);
+  }
+
   return (
     <>
       <div className="row mt-4 mb-4">
@@ -13,7 +21,13 @@ const Header = () => {
             <span className="helvetica-bold logo">CHEAT SHEET</span>
           </Link>
         </div>
-        <div className="col-5"></div>
+        <div className="col-5">
+          {isAdmin && (
+            <button className="btn btn-danger" onClick={() => handleLogout()}>
+              Logout
+            </button>
+          )}
+        </div>
         <div className="col-3">
           <Link style={{ textDecoration: "none" }} to="/request">
             <button className="btn btn-primary request-font helvetica-bold">

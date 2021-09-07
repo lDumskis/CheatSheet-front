@@ -11,9 +11,9 @@ import Home from "./components/Home";
 import AllView from "./components/AllView";
 import Footer from "./components/Footer";
 import SelectedTags from "./components/SelectedTags";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
-  const ADMIN_PW = "kugelis";
   const baseURL = "https://wtdback.qa.bazaarvoice.com/api/";
   const [articles, setArticles] = useState([]);
   const [filtered, setFiltered] = useState([]);
@@ -23,6 +23,7 @@ function App() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [tags, setTags] = useState([]);
   const [language, setLanguage] = useState("en");
+  const [token, setToken] = useLocalStorage("token", "");
 
   useEffect(() => {
     getAllArticles();
@@ -83,11 +84,12 @@ function App() {
         setSearch,
         isAdmin,
         setIsAdmin,
-        ADMIN_PW,
         tags,
         setTags,
         language,
         setLanguage,
+        token,
+        setToken,
       }}
     >
       <div className="container-fluid p-2">

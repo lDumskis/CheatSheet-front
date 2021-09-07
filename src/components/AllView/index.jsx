@@ -1,18 +1,27 @@
 import React, { useEffect, useContext } from "react";
 import TextFields from "../common/TextFields";
 import SearchContext from "../../context/SearchContext";
+import axios from "axios";
 
 const AllView = ({ result, setResult }) => {
-  const { isAdmin, setIsAdmin, ADMIN_PW } = useContext(SearchContext);
+  const { isAdmin, setIsAdmin, token, setToken } = useContext(SearchContext);
 
   useEffect(() => {
-    if (isAdmin) {
-      console.log("LoggedIn");
+    if (token === "") {
+      const username = prompt("Enter the username: ");
+      const password = prompt("Enter the password: ");
+      axios
+        .post("https://wtdback.qa.bazaarvoice.com//api/api-token-auth/", {
+          username: username,
+          password: password,
+        })
+        .then((response) => {
+          setToken(response.data.token);
+          setIsAdmin(true);
+        });
     } else {
-      let password = prompt("Enter the password: ");
-      if (password === ADMIN_PW) {
-        setIsAdmin(true);
-      } else password = prompt("Enter the password: ");
+      setIsAdmin(true);
+      console.log(token);
     }
   }, []);
 
