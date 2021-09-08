@@ -12,6 +12,8 @@ const ArticleRequest = () => {
   const [emptyRequest, setEmptyRequest] = useState(
     "form-control requestQuestion"
   );
+  const [files, setFiles] = useState([]);
+  const [fileURLs, setFileURLs] = useState([]);
 
   const baseStyle = {
     flex: 1,
@@ -42,16 +44,14 @@ const ArticleRequest = () => {
   };
 
   function StyledDropzone(props) {
-    const [files, setFiles] = useState([]);
-
     const onDrop = useCallback((acceptedFiles) => {
-      setFiles(
-        acceptedFiles.map((file) =>
-          Object.assign(file, {
-            preview: URL.createObjectURL(file),
-          })
-        )
+      const filesList = acceptedFiles.map((file) =>
+        Object.assign(file, {
+          preview: URL.createObjectURL(file),
+        })
       );
+      // console.log(files);
+      setFiles([...files, ...filesList]);
     }, []);
 
     const {
@@ -74,6 +74,7 @@ const ArticleRequest = () => {
       [isDragActive, isDragReject, isDragAccept]
     );
 
+    // console.log(files);
     const thumbs = files.map((file) => (
       <div className="thumbs" key={file.name}>
         <p className="thumbsText">{file.name}</p>
@@ -102,18 +103,41 @@ const ArticleRequest = () => {
     if (request === "") {
       setEmptyRequest("form-control emptyRequestQuestion");
     } else {
-      axios.post("https://wtdback.qa.bazaarvoice.com/api/", {
-        title: "Requested Post",
-        q: request,
-        a: " ",
-        n: 0,
-        isPublished: false,
-        email: email,
-        nickname: "Default",
-        t: [],
+      files.forEach((file) => {
+        const formData = new FormData();
+        formData.append("supportingImages", file);
+        //upload images
+        axios
+          .post("http://127.0.0.1:8000/api/uploadfile/", formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          })
+          .then(({ data }) => {
+            setFileURLs(fileURLs.push({ link: data }));
+          });
       });
-      setShowModal((prev) => !prev);
-      setRequestModal(true);
+      //your code to be executed after 1 second
+      if (files.length == fileURLs.length) {
+        axios
+          .post("http://127.0.0.1:8000/api/", {
+            title: "Requested Post",
+            q: request,
+            a: " ",
+            n: 0,
+            isPublished: false,
+            email: email,
+            nickname: "Default",
+            t: [],
+            l: [...fileURLs],
+          })
+          .then(({ statusText }) => {
+            if (statusText === "Created") {
+              setShowModal((prev) => !prev);
+              setRequestModal(true);
+            }
+          });
+      }
     }
   };
 
@@ -136,7 +160,6 @@ const ArticleRequest = () => {
         </div>
         <div className="col-3 d-flex flex-column justify-content-between">
           <StyledDropzone />
-
           <input
             id="requesterEmail"
             placeholder="Your email *"
