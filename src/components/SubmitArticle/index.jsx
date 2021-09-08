@@ -36,7 +36,7 @@ const SubmitArticle = ({ update = false, article, handleDelete }) => {
     } else {
       console.log(title);
       try {
-        axios.post("http://127.0.0.1:8000/api/", {
+        axios.post("https://wtdback.qa.bazaarvoice.com/api/", {
           title: title,
           q: question,
           a: answer,

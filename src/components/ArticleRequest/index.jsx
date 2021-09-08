@@ -13,7 +13,8 @@ const ArticleRequest = () => {
     "form-control requestQuestion"
   );
   const [files, setFiles] = useState([]);
-  const [fileURLs, setFileURLs] = useState([]);
+  const [fileURLs, setFileURLs] = useState([{}]);
+  const delayInMilliseconds = 3000; //1 second
 
   const baseStyle = {
     flex: 1,
@@ -108,36 +109,46 @@ const ArticleRequest = () => {
         formData.append("supportingImages", file);
         //upload images
         axios
-          .post("http://127.0.0.1:8000/api/uploadfile/", formData, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          })
+          .post(
+            "https://wtdback.qa.bazaarvoice.com/api/uploadfile/",
+            formData,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            }
+          )
           .then(({ data }) => {
             setFileURLs(fileURLs.push({ link: data }));
-          });
-      });
-      //your code to be executed after 1 second
-      if (files.length == fileURLs.length) {
-        axios
-          .post("http://127.0.0.1:8000/api/", {
-            title: "Requested Post",
-            q: request,
-            a: " ",
-            n: 0,
-            isPublished: false,
-            email: email,
-            nickname: "Default",
-            t: [],
-            l: [...fileURLs],
           })
-          .then(({ statusText }) => {
-            if (statusText === "Created") {
-              setShowModal((prev) => !prev);
-              setRequestModal(true);
-            }
-          });
-      }
+          .catch((er) => console.log(er));
+      });
+
+      setTimeout(function () {
+        if (files.length == fileURLs.length - 1) {
+          fileURLs.shift();
+          axios
+            .post("https://wtdback.qa.bazaarvoice.com/api/", {
+              title: "Requested Post",
+              q: request,
+              a: " ",
+              n: 0,
+              isPublished: false,
+              email: email,
+              nickname: "Default",
+              t: [],
+              l: [...fileURLs],
+            })
+            .then(({ statusText }) => {
+              console.log(statusText);
+              if (statusText === "") {
+                setShowModal((prev) => !prev);
+                setRequestModal(true);
+              }
+            })
+            .catch((er) => console.log(er));
+        }
+      }, delayInMilliseconds);
     }
   };
 
