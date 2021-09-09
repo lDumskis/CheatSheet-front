@@ -79,8 +79,19 @@ const ArticleRequest = () => {
     const thumbs = files.map((file) => (
       <div className="thumbs" key={file.name}>
         <p className="thumbsText">{file.name}</p>
+        <span
+          onClick={(e) => removeThumb(files, file)}
+          className="thumbsDelete"
+        >
+          &#215;
+        </span>
       </div>
     ));
+
+    const removeThumb = (files, file) => {
+      setFiles(files.filter((f) => f !== file));
+      // console.log(files);
+    };
 
     useEffect(
       () => () => {
