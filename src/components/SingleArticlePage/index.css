@@ -1,3 +1,23 @@
+.spacer{
+  height: 50px;
+}
+.edit{
+  margin-left: auto;
+  padding-right: 10px;
+}
+.copy{
+  margin-right: 30px;
+}
+.articleFooter{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 50px;
+
+}
 .resultHeaderArticle {
   border: solid 1px #bbbcbd;
   border-radius: 10px;
@@ -16,6 +36,9 @@
   box-shadow: -1px 2px 5px gray;
   padding: 15px;
   margin-left: 10px;
+  min-height: 250px;
+  width: 100%;
+  position: relative;
 }
 
 .knowMore {

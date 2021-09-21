@@ -206,11 +206,13 @@ const SubmitArticle = ({ update = false, article, handleDelete }) => {
           </div>
         </div>
       </div>
+  {/*     additional KB links - removed "supporting material"
       <div className="row">
         <div className="col-3 mt-2">
           <LinkInput links={links} setLinks={setLinks} />
         </div>
       </div>
+    */}
       <div className="row justify-content-end">
         <div className="col-2 mt-2">
           <button

@@ -147,21 +147,21 @@ const SingleArticlePage = () => {
                 </div>
               </div>
 
-              <div className="resultSnippetArticle row mt-3">
-                <div className="col-8">
-                  <div className="answerTarget">
-                    <p className="answerField helvetica">
-                      {language === "en" && article.a}
-                      {language === "fr" && article.a_fr}
-                      {language === "de" && article.a_de}
-                    </p>
-                    <div className="row">
-                      <div className="col-4">
+              <div className="resultSnippetArticle mt-3">
+                <div className="answerTarget">
+                  <p className="answerField helvetica">
+                    {language === "en" && article.a}
+                    {language === "fr" && article.a_fr}
+                    {language === "de" && article.a_de}
+                  </p>
+                  <div className="spacer"></div>
+                  <div className="articleFooter">
+                      <div className="author">
                         <p className="authorDisclaimer">
                           <em>Written by {article.nickname}</em>
                         </p>
                       </div>
-                      <div className="offset-1 col-3">
+                      <div className="edit">
                         <button
                           onClick={() => handleEditButton()}
                           className="btn btn-bv edit-icon"
@@ -169,7 +169,7 @@ const SingleArticlePage = () => {
                           <i className="far fa-edit"></i>
                         </button>
                       </div>
-                      <div className="offset-1 col-3">
+                      <div className="copy">
                         <button
                           onClick={() => handleCopy()}
                           className="btn btn-bv copy-icon"
@@ -177,9 +177,9 @@ const SingleArticlePage = () => {
                           Copy <i className="far fa-clone"></i>
                         </button>
                       </div>
-                    </div>
                   </div>
                 </div>
+                {/*
                 <div className="col-4">
                   <div className="knowMore alight-baseline">
                     <div class="centerButtons">
@@ -202,6 +202,7 @@ const SingleArticlePage = () => {
                     </div>
                   </div>
                 </div>
+*/}
               </div>
             </div>
           </div>
