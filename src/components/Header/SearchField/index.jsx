@@ -1,14 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "../../../App.css";
 import SearchContext from "../../../context/SearchContext";
 
 const SearchField = () => {
   const { search, setSearch } = useContext(SearchContext);
+  const [searchInputClass, setSearchInputClass] = useState("search");
+  useEffect(() => {
+    window.onscroll = () => {
+      window.pageYOffset < 300 ? setSearchInputClass('search') : setSearchInputClass('search onScroll');
+    }
+  }, []);
 
   return (
-    <div className="row height d-flex justify-content-center align-items-center">
+    <div className="row height d-flex justify-content-center align-items-center"> 
       <div className="offset-1 col-8">
-        <div className="search">
+        <div className={searchInputClass}>
           <i className="fa fa-search" />
           <input
             id="search-input"

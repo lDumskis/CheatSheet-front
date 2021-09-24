@@ -368,6 +368,11 @@
   margin-right: 100px;
   margin-left: -45px;
   z-index: 10;
+  transition-duration: 1000ms;
+  transition-property: margin-top;
+}
+.search.onScroll {
+  margin-top: -70px;
 }
 
 .search input {

@@ -12,27 +12,19 @@ const Header = () => {
     setToken("");
     setIsAdmin(false);
   }
-  const [cheatSheet, setCheatSheet] = useState("CHEAT SHEET");
-  const [requestBtn, setRequestBtn] = useState("REQUEST AN ARTICLE");
-    useEffect(() => {
-      window.onscroll = () => {
-        window.pageYOffset < 350 ? setCheatSheet('CHEAT SHEET') : setCheatSheet(window.pageYOffset);
-        window.pageYOffset < 350 ? setRequestBtn('REQUEST AN ARTICLE') : setRequestBtn("REQUEST");
-      }
-    }, []);
 
   return (
     <>
       <div className="header">
         <div className="logo-header">
           <Link style={{ textDecoration: "none" }} to="/">
-            <span onScroll={setCheatSheet} className="helvetica-bold logo">{cheatSheet}</span>
+            <span className="helvetica-bold logo">CHEAT SHEET</span>
           </Link>
         </div>
         <div className="articleRequest-btn">
           <Link style={{ textDecoration: "none" }} to="/request">
-            <button onScroll={setRequestBtn} className="btn btn-primary request-font helvetica-bold">
-              {requestBtn}
+            <button className="btn btn-primary request-font helvetica-bold">
+            REQUEST AN ARTICLE
             </button>
           </Link>
         </div>
