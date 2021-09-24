@@ -248,9 +248,16 @@
   font-family: "Helvetica Neue Condensed Bold" !important;
 }
 
-.container-fluid {
+.container-header {
   background-color: #002e6e;
   height: auto;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.header{
+  display: flex;
+  justify-content: space-between;
 }
 
 .logo {
@@ -295,10 +302,9 @@
   min-height: 30px;
   display: flex;
   flex-wrap: wrap;
-  padding: 5px;
+  padding: 10px 10px 10px 20px;
   position: relative;
 }
-
 .tag {
   color: #6ed8bf;
   display: flex;
@@ -361,6 +367,7 @@
   position: relative;
   margin-right: 100px;
   margin-left: -45px;
+  z-index: 10;
 }
 
 .search input {
@@ -477,4 +484,25 @@
   bottom: 5px;
   right: 2%;
   width: 30%;
+}
+.articleRequest-btn{
+  margin-left: auto;
+  padding-right: 50px;
+  padding-bottom: 30px;
+}
+.logo-header{
+  padding-left: 20px;
+}
+.header-search{
+  display: flex;
+  flex-direction: column;
+}
+.popular-tags{
+  margin-left: 18%;
+}
+.test-background{
+background-color:cadetblue;
+border-radius: 20px;
+margin-top: 10px;
+padding: 5px;
 }

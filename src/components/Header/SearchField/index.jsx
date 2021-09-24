@@ -11,6 +11,7 @@ const SearchField = () => {
         <div className="search">
           <i className="fa fa-search" />
           <input
+            id="search-input"
             value={search}
             type="text"
             className="form-control helvetica-italic"

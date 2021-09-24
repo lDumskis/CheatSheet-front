@@ -92,10 +92,8 @@ function App() {
         setToken,
       }}
     >
-      <div className="container-fluid p-2">
-        <div className="container">
+      <div className="container-header p-2">
           <Header />
-        </div>
       </div>
 
       <div className="background">
